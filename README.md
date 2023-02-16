@@ -16,4 +16,4 @@ texlive-biblatex-ieee.noarch
 texlive-fvextra.noarch
 texlive-datetime2.noarch
 texlive-datetime2-finnish.noarch
- 
+texlive-enumitem.noarch
