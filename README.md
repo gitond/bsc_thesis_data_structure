@@ -1,18 +1,26 @@
-# A template for BSc / MSc theses
+This is a git repo containing my (Botond Ortutay) BSC thesis data structure 
+for easier synchronization between different computers as well as version 
+control.
 
-Document template suitable for use as a LaTeX master-file for bachelor's /
-master's thesis in University of Turku Department of Computing.
-Merge requests are welcome - if you find an issue, [please report to us](issues/new).
+It is based on the template available at https://gitlab.utu.fi/ttweb/thesis
 
-Compatible with: ShareLaTeX, pdfLaTeX, LuaLaTeX, XeLaTeX, LyX, latexmk.
-The template is configured to use the prebuilt TeXLive image available via
-[thesis/builder](https://gitlab.utu.fi/tech/soft/thesis/builder).
+I don't own, or claim to own the template copyright.
 
-## Documentation
+In order to correctly compile the .tex files into .pdf on a basic Fedora 
+install, certain dependencies need to be installed. Underneath you'll find 
+the list of dependencies. Note that multiple compiles may be necessary to 
+get the pdf to compile correctly due to changes in reference structure 
+during compilation. Might be adressed later by creating a makefile, but as 
+of now no such file exists.
 
-Online documentation available at
-**<https://tech.utugit.fi/soft/thesis/doc/doc/overview/>**
-(address changed 2021/04).
-
-Also visit the [generated preview page](https://ttweb.utugit.fi/thesis)
-for a live demo of the rendered document.
+Dependencies:
+texlive-latex.noarch
+texlive-adjustbox.noarch
+texlive-babel-finnish.noarch
+texlive-pdfx.noarch
+texlive-nomencl.noarch
+texlive-biblatex-ieee.noarch
+texlive-fvextra.noarch
+texlive-datetime2.noarch
+texlive-datetime2-finnish.noarch
+ 
