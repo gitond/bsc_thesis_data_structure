@@ -1,0 +1,14 @@
+Hiukan tarkempi suunnitelma
+2. Taustoitus
+	2.1 Polunetsintä ongelmana
+		- Määritelmä (https://ieeexplore-ieee-org.ezproxy.utu.fi/document/7124867)
+		- Yhteys graafiteoriaan (https://dl.acm.org/doi/pdf/10.1155/2015/736138 , Jufo-taso 1)
+		- Mapf lyhyesti (https://arxiv.org/pdf/1906.08291.pdf)
+	2.2 Algoritmeista
+		- Uninformed search algortihms (https://www.mdpi.com/2076-3417/12/11/5499 , Jufo-taso 1)
+		- Informed search/heuristic search (https://www.mdpi.com/2076-3417/12/11/5499 , Jufo-taso 1)
+		- A* esittely lyhyesti (https://ieeexplore-ieee-org.ezproxy.utu.fi/document/7124867)
+	2.3 Esimerkkejä sovelluskohteista
+		- Videopelit (https://www.researchgate.net/publication/325368698_Comparative_Analysis_of_Pathfinding_Algorithms_A_Dijkstra_and_BFS_on_Maze_Runner_Game)
+		- Karttaohjelmat (https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9294376)
+		- Robotiikka (https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9337860)
