@@ -1,4 +1,38 @@
 \chapter{Taustoitus} \label{Taustoitus}
+
 \section{Polunetsintä ongelmana}\label{pOngelmana}
+Polunetsintä tarkoittaa tietotekniikan kontekstissa ongelmaa, jossa halutaan 
+koneellisesti löytää, sekä mahdollisesti myös piirtää sallittu polku kahden 
+etukäteen määritellyn pisteen väliin. Useissa polunetsinnän liittyvissä 
+ongelmissa halutaan myös, että löydetty polku olisi jollain tavalla 
+optimaalinen. Optimaalinen polku voisi esimerkiksi olla lyhyempi tai nopeampi 
+kuin muut mahdolliset polut. \cite{MathewAndMalathy} \par
+	Jotta polunetsintäongelmia voitaisiin ratkaista koneellisesti, 
+tarvitsee ne ensin muuttaa matemaattiseen esitysmuotoon. Tämän vuoksi 
+polunetsintäongelmat voidaan jakaa kahteen osaonglemaan: graafigeneraatioon 
+ja polunetsintäalgoritmin käyttöön. Graafigeneraatiota tarvitaan, koska polun 
+löytämiseen käytetyt algoritmit toimivat tyypillisesti graafeissa. Siinä 
+muutetaan polunetsintäongelman alueena toimiva maasto- tai kartta-alue 
+graafimuotoiseksi rakentamalla siitä esimerkiksi luurankomalli 
+(skeletonization). \cite{ACMHindawi} Tämä tutkielma on keskittynyt 
+polunetsintäalgoritmeihin ja niiden käyttöön, eikä graafigeneraatiota tämän 
+vuoksi käsitellä tutkielmassa laajemmin.
+
+\\
+\paragraph{\textit{* Tässä voisi olla jokin kuva kartan muuttamisesta graafiksi *}}\mbox{}
+\\
+
+	Polunetsintäongelmat voidaan myös jakaa yksiagentillisiin 
+(single-agent) ja moniagentillisiin (multi-agent) polunetsintäongelmiin. 
+Yksiagentillisissa ongelmissa ongelma-alueella liikkuu vain yksi agentti, 
+jolle pyritään löytämään optimaalinen polku jostain lähtöpisteestä johonkin 
+päämäärään. Moniagentillisisssa ongelmissa alueella liikkuvia agentteja on 
+useita. Näissä kaikilla agenteilla on oma lähtöpiste ja oma päämäärä ja 
+kaikille tulee löytää optimaaliset polut niin, että agentit eivät törmäile 
+toisiinsa ja niiden välille ei synny reititykseen liittyviä konflikteja. 
+\cite{arXivMAPF} Näistä ongelmatyypeistä tämä tutkielma on käsittelee 
+pääasiassa yksiagentilliseen polunetsintään kehitettyjä 
+polunetsintäalgoritmeja.
+
 \section{Algoritmeista}\label{algoritmeista}
 \section{Esimerkkejä sovelluskohteista}\label{eSuovelluskohteista}
