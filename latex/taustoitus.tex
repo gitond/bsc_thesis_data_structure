@@ -17,11 +17,9 @@ graafimuotoiseksi rakentamalla siitä esimerkiksi luurankomalli
 (skeletonization). \cite{ACMHindawi} Tämä tutkielma on keskittynyt 
 polunetsintäalgoritmeihin ja niiden käyttöön, eikä graafigeneraatiota tämän 
 vuoksi käsitellä tutkielmassa laajemmin.
-
 \\
 \paragraph{\textit{* Tässä voisi olla jokin kuva kartan muuttamisesta graafiksi *}}\mbox{}
 \\
-
 	Polunetsintäongelmat voidaan myös jakaa yksiagentillisiin 
 (single-agent) ja moniagentillisiin (multi-agent) polunetsintäongelmiin. 
 Yksiagentillisissa ongelmissa ongelma-alueella liikkuu vain yksi agentti, 
@@ -35,4 +33,41 @@ pääasiassa yksiagentilliseen polunetsintään kehitettyjä
 polunetsintäalgoritmeja.
 
 \section{Algoritmeista}\label{algoritmeista}
+Tässä tutkielmassa tarkasteltavat algoritmit ovat kaksiulotteisissa 
+ajoaikana muuttumattomissa graafeissa toimivia yksiagenttisia 
+polunetsintäalgoritmeja, ellei toisin mainita. Nämä algoritmit voidaan jakaa 
+niiden toimintaperjaatteen mukaan epäinformoituihin (uninformed), 
+informoituihin (informed) ja metaheuristisiin (metaheuristic) 
+hakualgoritmeihin(search algorithms).\cite{applSciLawande}\par
+	Epäinformoidut hakualgoritmit ovat yksinkertaisia algoritmeja, jotka 
+eivät ole tietoisia ongelma-alueensa yksityiskohdista. Näin ollen 
+epäinformoidut hakualgoritmit perustuvat toimintamalliin, jossa kuljetaan 
+graafissa solmukohdalta toiseen kaaria pitkin niin kauan kunnes ollaan 
+löydetty polku lähtösolmusta maalisolmuun. Tätä toimintamallia sanotaan 
+joskus myös sokean haun konseptiksi (blind search).\cite{applSciLawande}\par
+	Informoidut hakualgoritmit sen sijaan käyttävät ongelma-alueesta 
+laskettuja tietoja hyväksi nopeuttaakseen ajoaikaa. Tyypillisesti tämä 
+tehdään laskemalla seuraavaksi läpikäytävien solmukohtien etäisyys 
+maalisolmusta käyttämällä niinkutsuttua heuristista funktiota. Näin ollen 
+jokaiselle graafissa olevalle solmukohdalle \textbf{n} saadaan laskettua sen 
+kautta kulkevan polun hinta \textbf{F(n)} käyttämällä hintafunktiota 
+\textbf{F(n) = G(n) + H(n)} , jossa \textbf{G(n)} on solmulle \textbf{n} 
+asti kuljettu matka lähtösolmusta ja \textbf{H(n)} on heuristisen funktion 
+palauttama arvo. Korkeahintaisia solmukohtia ei tutkita algoritmin ajon 
+aikana, jonka takia tutkittavia solmuja on yhteensä vähemmän ja algoritmi on 
+nopeampi ajaa.\cite{applSciLawande}\par
+	A* (luetaan A-tähti tai A-star) on yksi esimerkki informoidusta 
+hakualgoritmista. A* on yksi suosituimmista polunetsintäalgoritmeista 
+käytännön sovelluskohteista. Tämä johtuu siitä, että A* on yksinkertainen 
+implementoida ja se palauttaa aina optimaalisen polun, mikäli käytetään 
+sopivaa heuristista funktiota.\cite{MathewAndMalathy} Sen pohjalta on 
+myös kehitetty muita polunetsintäalgoritmeja.\cite{applSciLawande}\par
+	Metaheuristiset algoritmit eivät perustu heuristisiin funktioihin tai 
+solmukohtien tutkimiseen vaan ne käyttävät muunlaisia keinoja polkujen 
+etsimiseen.\cite{applSciLawande} Niitä ei käydä tässä tutkielmassa tarkemmin 
+läpi.
+\\
+\paragraph{\textit{* Huom! Jos tutkielma jäämässä liian lyhyeksi, GA:ta mahd käsitellään luvun \ref{joitainP} alilukuna *}}\mbox{}
+\\
+
 \section{Esimerkkejä sovelluskohteista}\label{eSuovelluskohteista}
