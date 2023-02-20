@@ -28,7 +28,7 @@ päämäärään. Moniagentillisisssa ongelmissa alueella liikkuvia agentteja on
 useita. Näissä kaikilla agenteilla on oma lähtöpiste ja oma päämäärä ja 
 kaikille tulee löytää optimaaliset polut niin, että agentit eivät törmäile 
 toisiinsa ja niiden välille ei synny reititykseen liittyviä konflikteja. 
-\cite{arXivMAPF} Näistä ongelmatyypeistä tämä tutkielma on käsittelee 
+\cite{arXivMAPF} Näistä ongelmatyypeistä tämä tutkielma käsittelee 
 pääasiassa yksiagentilliseen polunetsintään kehitettyjä 
 polunetsintäalgoritmeja.
 
@@ -71,3 +71,40 @@ läpi.
 \\
 
 \section{Esimerkkejä sovelluskohteista}\label{eSuovelluskohteista}
+Polunetsintäongelmia joudutaan ratkomaan muun muassa videopeleissä, 
+karttaohjelmissa, erilaisissa simulaatioissa ja robotiikan alalla,
+\cite{ACMHindawi} sekä esimerkiksi logistiikan alan automatisaatiossa ja 
+robotisoitujen autojen kehityksessä.\cite{arXivMAPF} Merkittävän suuri 
+osa polunetsintäongelmiin liittyvistä tutkimuksista tehdään nimenomaan 
+\\videopelien\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi}
+ja robotiikan\cite{ACMHindawi}\cite{DelaunayVoronoiAStar} näkökulmasta.\par
+	Polunetsintäongelmia esiintyy videopeleissä, koska niissä on usein 
+tarve simuloida ei-pelattavien hahmojen (non-playable character, NPC) 
+liikkeitä niin, että niille on määritelty lähtö- ja maalipisteet, sekä 
+sallitut ja kielletyt liikkumisalueet. Kun polunetsintäalgoritmeja 
+sovelletaan videopeleihin on tärkeää, että algoritmit olisivat 
+laskentatehokkaita. Esimerkiksi reaaliaikaisissa strategiapeleissä 
+(real-time strategy, RTS) pelaaja liikuttaa useita eri yksiköitä eri puolille 
+karttaa merkitsemällä niille pisteitä joiden kautta kulkea. Näissä 
+tilanteissa on pelikokemuksen kannalta tärkeää, ettei eri yksiköille 
+suoritettavat polunetsintäalgoritmit vaikuttaisi pelin 
+sulavuuteen.\cite{MathewAndMalathy} \textcite{mazeGameTrilogi} tutkivat 
+eri polunetsintäalgoritmien toimimista videopelissä, jossa pelaaja rakenstaa 
+valmiiksi annetuista palikoista labyrintin ja algoritmi yrittää ratkaista 
+sen. Tutkimuksessa A* osoittautui tutkituista algoritmeista parhaaksi. 
+Vastaavankaltainen tutkimus käydään yksityiskohtaisemmin läpi tutkielman 
+luvussa \ref{benchmarking}. \par
+	Videopelien lisäksi polunetsintäalgoritmejä sovelletaan myös 
+karttaohjelmissa. Niissä polunetsintää käytetään reitinhakuun, joka on 
+karttaohjelmien eräs päätoiminnallisuus. Esimerkiksi 
+\textcite{applSciLawande} mukaan Google Maps käyttää Dijkstran algoritmiä 
+josta puhutaan tarkemmin tutkielman luvussa \ref{dijkstra}.Karttaohjelmissa 
+polunetsintä on kuitenkin melko erilaista kuin videopeleissä. Ensinnäkin on 
+tärkeää, että yksittäisen optimaalisen reitin sijasta reitinhaku palauttaisi 
+käyttäjälle useita vaihtoehtoisia ajoreittejä, joita generoitaisiin lisää 
+ajon aikana siltä varalta, että liikenteen olosuhteet 
+muuttuvat.\cite{Lanelet2} \textcite{Lanelet2} käyvät artikkelissaan läpi 
+heidän suunnittelemansa digitaalisen kartta-alustan Lanelet2:n 
+lähestymistapaa reitinhakuun. Polunetsintäalgoritmien käyttö 
+karttaohjelmien reitinhaussa käydään tarkemmin läpi tutkielman luvussa 
+\ref{karttaohjelmat}. \par

@@ -1,0 +1,29 @@
+Lähteiden viittausavaimet cheat sheet:
+
+Direction based heuristic for pathfinding in video games
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/7124867
+MathewAndMalathy
+
+A Comprehensive Study on Pathfinding Techniques for Robotics and Video Games
+https://dl.acm.org/doi/pdf/10.1155/2015/736138
+ACMHindawi
+
+Multi-Agent Pathfinding: Definitions, Variants, and Benchmarks
+https://arxiv.org/pdf/1906.08291.pdf
+arXivMAPF
+
+A Systematic Review and Analysis of Intelligence-Based Pathfinding Algorithms in the Field of Video Games
+https://www.mdpi.com/2076-3417/12/11/5499
+applSciLawande
+
+Comparative Analysis of Pathfinding Algorithms A*, Dijkstra, and BFS on Maze Runner Game
+https://www.researchgate.net/publication/325368698_Comparative_Analysis_of_Pathfinding_Algorithms_A_Dijkstra_and_BFS_on_Maze_Runner_Game
+mazeGameTrilogi
+
+A Dynamic Fusion Pathfinding Algorithm Using Delaunay Triangulation and Improved A-Star for Mobile Robots
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9337860
+DelaunayVoronoiAStar
+
+Pathfinding and Routing for Automated Driving in the Lanelet2 Map Framework
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9294376
+Lanelet2
