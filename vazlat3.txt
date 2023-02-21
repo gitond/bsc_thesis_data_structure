@@ -1,0 +1,19 @@
+Hiukan tarkempi suunnitelma
+3. Joitain polunetsintäalgoritmeja
+	3.1 Leveyssuuntainen läpikäynti (BFS)
+	3.2 Syvyyssttntainen läpikäynti (DFS)
+	3.3 Dijkstran algoritmi
+	3.4 A*-algoritmi
+		- Joitain A* variantteja vähintään maininnan tasolla
+			- esim. D*
+	3.5 Hierarkinen polunetsintä
+		- Käy läpi lähde: Regions Discovery Algorithm for Pathfinding in Grid Based Maps
+		- Vähintään maininnan tasolla HPA*
+		- Algoritmi pseudokoodilla: Joko lähteen esittelemä RDA, tai sitten HPA*
+
+Aliluvuille 3.1-3.4:
+	- Lyhyt sanallinen esitys siitä miten algoritmi toimii
+	- Pseudokoodi
+	- Graafinen esitys
+
+Tähtää siihen, että jokainen aliluku olisi about 1 sivu!
