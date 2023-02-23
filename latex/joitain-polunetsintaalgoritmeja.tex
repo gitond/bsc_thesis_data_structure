@@ -1,5 +1,18 @@
-\chapter{Joitain polunetsintäalgoritmeja} \label{joitainP}
+\chapter{Joitain polunetsintäalgoritmeja}\label{joitainP}
+
+\section{Leveyssuuntainen läpikäynti (BFS)}\label{bfs}
+Leveyssuuntainen läpikäynti, eli leveyshaku (Breadth First Search, BFS) on 
+epäinformoitu hakualgoritmi, joka perustuu sokeaan 
+hakuun.\cite{applSciLawande} Siinä graafin solmut ryhmitellään eri tasoihin 
+sen mukaan monenko kaaren kautta pitää kulkea lähtösolmusta, jotta niihin 
+päästään. Lähtösolmu on siis tasolla 0, siihen yhdistyneet solmut tasolla 1, 
+tason 1 solmuihin yhdistyneet solmut tasolla 2 ja niin edelleen. 
+Leveyshaussa graafin kaikki solmut käydään läpi niin, että tarkistetaan 
+onko solmussa jo käyty, onko solmu maalisolmu ja mihin solmuihin sillä on 
+yhteys. Sitten tallennetaan solmu läpikäytyjen solmujen listalle ja tieto 
+siitä, mitä kautta solmulle ollaan tultu.
+
+\section{Syvyyssuuntainen läpikäynti (DFS)}\label{dfs}
 \section{Dijkstran algoritmi}\label{dijkstra}
 \section{A*-algoritmi}\label{aStar}
-
-\paragraph{\textit{*Tähän mahdollisesti muitakin algoritmeja*}}
+\section{Hierarkinen polunetsintä}\label{hpa}
