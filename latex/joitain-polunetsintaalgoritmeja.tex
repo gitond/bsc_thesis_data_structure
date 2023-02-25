@@ -10,7 +10,43 @@ tason 1 solmuihin yhdistyneet solmut tasolla 2 ja niin edelleen.
 Leveyshaussa graafin kaikki solmut käydään läpi niin, että tarkistetaan 
 onko solmussa jo käyty, onko solmu maalisolmu ja mihin solmuihin sillä on 
 yhteys. Sitten tallennetaan solmu läpikäytyjen solmujen listalle ja tieto 
-siitä, mitä kautta solmulle ollaan tultu.
+siitä, mitä kautta solmulle ollaan tultu.\cite{BFSRahim} \par
+	BFS:n etuihin kuuluu, että tällä algoritmilla voidaan löytää kaikki 
+mahdolliset polut lähtösolmusta maalisolmuun, koska se käy läpi kaikki graafin 
+solmut.\cite{BFSRahim} Näistä voidaan sitten valita optimaalisin polku.
+Haittapuoliin kuuluu suuri muistinkulutus tallennettujen polkujen 
+lukumäärän takia,\cite{BFSRahim} sekä pitkä ajoaika.\cite{mazeGameTrilogi} 
+Alla \textcite{applSciLawande} perusteella kirjoitettu pseudokoodi 
+BFS-algoritmille:
+\begin{algorithm}[H]
+\caption{Esimerkki BFS-algoritmista}\label{BFSEsim}
+\begin{algoritmic}
+\Procedure{BFSEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $vieraillut \gets tyhjaLista$
+	\State $kasiteltavat \gets tyhjaLista$
+	\State $kasiteltavat.lisaaLoppuun(nykyinen=lahtosolmu;vanhempi=NULL)$
+	\While{$kasiteltavat\not=tyhjaLista$}
+		\State $kasiteltava \gets kasiteltavat.poistaEnsimmainen()$
+		\State $vieraillut.lisaaLoppuun(kasiteltavat)$
+		\If{$kasiteltava.nykyinen = maalisolmu$}
+			\State $polku \gets tyhjaLista$
+			\While{$kasiteltava.vanhempi\not=NULL$}
+				\State $polku.lisaaAlkuun(kasiteltava.nykyinen)$
+				\State $kasiteltava \gets kasiteltava.vanhempi$
+			\EndWhile
+			\State $polku.lisaaAlkuun(lahtosolmu)$
+			\State \textbf{return} $polku$
+		\Else
+			\ForAll{$n \in kasiteltava.nykyinen.naapurit$}
+				\State $(n \not\in kasitellyt ?  kasiteltavat.lisaaLoppuun$
+				\State $(nykyinen = n;vanhempi = kasiteltava.nykyinen) :$
+				\State \textbf{continue} $;$
+			\EndFor
+		\EndIf
+	\EndWhile
+\EndProcedure
+\end{algoritmic}
+\end{algorithm}
 
 \section{Syvyyssuuntainen läpikäynti (DFS)}\label{dfs}
 \section{Dijkstran algoritmi}\label{dijkstra}

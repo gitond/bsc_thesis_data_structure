@@ -27,3 +27,7 @@ DelaunayVoronoiAStar
 Pathfinding and Routing for Automated Driving in the Lanelet2 Map Framework
 https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9294376
 Lanelet2
+
+Breadth First Search Approach for Shortest Path Solution in Cartesian Area
+https://iopscience.iop.org/article/10.1088/1742-6596/1019/1/012038/pdf
+BFSRahim
