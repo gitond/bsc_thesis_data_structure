@@ -11,14 +11,176 @@ Leveyshaussa graafin kaikki solmut käydään läpi niin, että tarkistetaan
 onko solmussa jo käyty, onko solmu maalisolmu ja mihin solmuihin sillä on 
 yhteys. Sitten tallennetaan solmu läpikäytyjen solmujen listalle ja tieto 
 siitä, mitä kautta solmulle ollaan tultu.\cite{BFSRahim} \par
-	BFS:n etuihin kuuluu, että tällä algoritmilla voidaan löytää kaikki 
-mahdolliset polut lähtösolmusta maalisolmuun, koska se käy läpi kaikki graafin 
-solmut.\cite{BFSRahim} Näistä voidaan sitten valita optimaalisin polku.
-Haittapuoliin kuuluu suuri muistinkulutus tallennettujen polkujen 
-lukumäärän takia,\cite{BFSRahim} sekä pitkä ajoaika.\cite{mazeGameTrilogi} 
-Alla \textcite{applSciLawande} perusteella kirjoitettu pseudokoodi 
-BFS-algoritmille:
-\begin{algorithm}[H]
+	Ajetaan \textcite{applSciLawande} perusteella 
+kirjoitetun, ohjelmalistauksen \ref{BFSEsim} mukaista BFS-algoritmia graafissa 
+\ref{refGraf}. Asetetaan lähtösolmuksi G ja maalisolmuksi P. Oletetaan, että 
+algoritmille syötetty graafidata on aakkosjärjestyksessä, jonka takia 
+algoritmi käy läpi solmuja aakkosten mukaan. Tasoksi 0 asetetaan lähtösolmu G. 
+Tason 1 muodostavat siihen yhteydessä olevat solut E, J ja L. Tason 2 soluja 
+ovat tason 1 soluissa kiinni olevat solut, eli B, H ja O. Solmua G ei 
+huomioida, koska siellä on jo käyty. Joitain solmuja voidaan kuitenkin käydä 
+läpi useasti, jos sinne on useampi polku. Algoritmin ajo graafissa 
+\ref{refGraf} johti kuvan \ref{refBFS} lopputulokseen, jossa käytiin läpi 
+syaaninväriset kaaret ja löydettiin punaisella merkitty polku G-E-H-K-P. \par
+	Ohjelmalistauksen \ref{BFSEsim} algoritmi lopettaa etsinnän 
+löydettyään yhden polun, mutta jos algoritmiin ei lisätä tätä lopetusehdoksi, 
+niin algoritmi käy läpi kaikki solmut ja kaaret ja löytää kaikki mahdolliset 
+polut.\cite{BFSRahim} Haittapuoliin kuuluu suuri muistinkulutus tallennettujen 
+polkujen lukumäärän takia,\cite{BFSRahim} sekä pitkä 
+ajoaika.\cite{mazeGameTrilogi}. Nämä voidaan huomata myös syaaninväristen 
+kaarten suuresta määrästä.
+
+\begin{figure}
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{tikzpicture}[main/.style = {draw, circle}] 
+		%Pisteet
+		\filldraw[black] (0,6) circle (2pt) node[anchor=west]{A};
+		\filldraw[black] (-1,5) circle (2pt) node[anchor=west]{B};
+		\filldraw[black] (1,5) circle (2pt) node[anchor=west]{C};
+		\filldraw[black] (0,4) circle (2pt) node[anchor=west]{D};
+		\filldraw[black] (-1,3) circle (2pt) node[anchor=west]{E};
+		\filldraw[black] (1,3) circle (2pt) node[anchor=west]{F};
+		\filldraw[black] (-2,2) circle (2pt) node[anchor=west]{G};
+		\filldraw[black] (0,2) circle (2pt) node[anchor=west]{H};
+		\filldraw[black] (2,2) circle (2pt) node[anchor=west]{I};
+		\filldraw[black] (-1,1) circle (2pt) node[anchor=west]{J};
+		\filldraw[black] (1,1) circle (2pt) node[anchor=west]{K};
+		\filldraw[black] (-2,0) circle (2pt) node[anchor=west]{L};
+		\filldraw[black] (0,0) circle (2pt) node[anchor=west]{M};
+		\filldraw[black] (2,0) circle (2pt) node[anchor=west]{N};
+		\filldraw[black] (-1,-1) circle (2pt) node[anchor=west]{O};
+		\filldraw[black] (1,-1) circle (2pt) node[anchor=west]{P};
+		% Janat
+		\draw (0,6) -- node[midway, above left, sloped] {1} (1,5);	% AB
+		\draw (0,6) -- node[midway, above right, sloped] {1} (-1,5);	% AC
+		\draw (-1,5) -- node[midway, below left, sloped] {2} (0,4);	% BD
+		\draw (-1,5) -- node[midway, left] {1} (-1,3);			% BE
+		\draw (1,5) -- node[midway, below right, sloped] {2} (0,4);	% CD
+		\draw (1,5) -- node[midway, right] {1} (1,3);			% CF
+		\draw (0,4) -- node[midway, right] {3} (0,2);			% DH
+		\draw (-1,3) -- node[midway, above left, sloped] {1} (-2,2);	% EG
+		\draw (-1,3) -- node[midway, above right, sloped] {2} (0,2);	% EH
+		\draw (1,3) -- node[midway, above left, sloped] {2} (0,2);	% FH
+		\draw (1,3) -- node[midway, above right, sloped] {1} (2,2);	% FI
+		\draw (-2,2) -- node[midway, above right, sloped] {2} (-1,1);	% GJ
+		\draw (-2,2) -- node[midway, left] {1} (-2,0);			% GL
+		\draw (0,2) -- node[midway, above left, sloped] {3} (-1,1);	% HJ
+		\draw (0,2) -- node[midway, above right, sloped] {3} (1,1);	% HK
+		\draw (0,2) -- node[midway, right] {2} (0,0);			% HM
+		\draw (2,2) -- node[midway, above left, sloped] {2} (1,1);	% IK
+		\draw (2,2) -- node[midway, right] {1} (2,0);			% IN
+		\draw (-1,1) -- node[midway, left] {2} (-1,-1);			% JO
+		\draw (1,1) -- node[midway, right] {2} (1,-1);			% KP
+		\draw (-2,0) -- node[midway, below left, sloped] {1} (-1,-1);	% LO
+		\draw (0,0) -- node[midway, below right, sloped] {1} (-1,-1);	% MO
+		\draw (0,0) -- node[midway, above right, sloped] {1} (1,-1);	% MP
+		\draw (2,0) -- node[midway, below right, sloped] {1} (1,-1);	% NP
+		\end{tikzpicture}
+		\caption{Referenssigraafi}\label{refGraf}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{tikzpicture}[main/.style = {draw, circle}] 
+		%Pisteet
+		\filldraw[black] (0,6) circle (2pt) node[anchor=west]{A};
+		\filldraw[black] (-1,5) circle (2pt) node[anchor=west]{B};
+		\filldraw[black] (1,5) circle (2pt) node[anchor=west]{C};
+		\filldraw[black] (0,4) circle (2pt) node[anchor=west]{D};
+		\filldraw[red] (-1,3) circle (2pt) node[anchor=west]{E};
+		\filldraw[black] (1,3) circle (2pt) node[anchor=west]{F};
+		\filldraw[red] (-2,2) circle (2pt) node[anchor=west]{G};
+		\filldraw[red] (0,2) circle (2pt) node[anchor=west]{H};
+		\filldraw[black] (2,2) circle (2pt) node[anchor=west]{I};
+		\filldraw[black] (-1,1) circle (2pt) node[anchor=west]{J};
+		\filldraw[red] (1,1) circle (2pt) node[anchor=west]{K};
+		\filldraw[black] (-2,0) circle (2pt) node[anchor=west]{L};
+		\filldraw[black] (0,0) circle (2pt) node[anchor=west]{M};
+		\filldraw[black] (2,0) circle (2pt) node[anchor=west]{N};
+		\filldraw[black] (-1,-1) circle (2pt) node[anchor=west]{O};
+		\filldraw[red] (1,-1) circle (2pt) node[anchor=west]{P};
+		% Janat
+		\draw [cyan] (0,6) -- node[midway, above left, sloped] {1} (1,5);	% AB
+		\draw [cyan] (0,6) -- node[midway, above right, sloped] {1} (-1,5);	% AC
+		\draw [cyan] (-1,5) -- node[midway, below left, sloped] {2} (0,4);	% BD
+		\draw [cyan] (-1,5) -- node[midway, left] {1} (-1,3);			% BE
+		\draw [cyan] (1,5) -- node[midway, below right, sloped] {2} (0,4);	% CD
+		\draw [cyan] (1,5) -- node[midway, right] {1} (1,3);			% CF
+		\draw [cyan] (0,4) -- node[midway, right] {3} (0,2);			% DH
+		\draw [red] (-1,3) -- node[midway, above left, sloped] {1} (-2,2);	% EG
+		\draw [red] (-1,3) -- node[midway, above right, sloped] {2} (0,2);	% EH
+		\draw [cyan] (1,3) -- node[midway, above left, sloped] {2} (0,2);	% FH
+		\draw [cyan] (1,3) -- node[midway, above right, sloped] {1} (2,2);	% FI
+		\draw [cyan] (-2,2) -- node[midway, above right, sloped] {2} (-1,1);	% GJ
+		\draw [cyan] (-2,2) -- node[midway, left] {1} (-2,0);			% GL
+		\draw [cyan] (0,2) -- node[midway, above left, sloped] {3} (-1,1);	% HJ
+		\draw [red] (0,2) -- node[midway, above right, sloped] {3} (1,1);	% HK
+		\draw [cyan] (0,2) -- node[midway, right] {2} (0,0);			% HM
+		\draw [cyan] (2,2) -- node[midway, above left, sloped] {2} (1,1);	% IK
+		\draw (2,2) -- node[midway, right] {1} (2,0);			% IN
+		\draw [cyan] (-1,1) -- node[midway, left] {2} (-1,-1);			% JO
+		\draw [red] (1,1) -- node[midway, right] {2} (1,-1);			% KP
+		\draw [cyan] (-2,0) -- node[midway, below left, sloped] {1} (-1,-1);	% LO
+		\draw [cyan] (0,0) -- node[midway, below right, sloped] {1} (-1,-1);	% MO
+		\draw (0,0) -- node[midway, above right, sloped] {1} (1,-1);	% MP
+		\draw (2,0) -- node[midway, below right, sloped] {1} (1,-1);	% NP
+		\end{tikzpicture}
+		\caption{BFS referenssigraafissa}\label{refBFS}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{tikzpicture}[main/.style = {draw, circle}] 
+		%Pisteet
+		\filldraw[red] (0,6) circle (2pt) node[anchor=west]{A};
+		\filldraw[red] (-1,5) circle (2pt) node[anchor=west]{B};
+		\filldraw[red] (1,5) circle (2pt) node[anchor=west]{C};
+		\filldraw[red] (0,4) circle (2pt) node[anchor=west]{D};
+		\filldraw[red] (-1,3) circle (2pt) node[anchor=west]{E};
+		\filldraw[red] (1,3) circle (2pt) node[anchor=west]{F};
+		\filldraw[red] (-2,2) circle (2pt) node[anchor=west]{G};
+		\filldraw[red] (0,2) circle (2pt) node[anchor=west]{H};
+		\filldraw[red] (2,2) circle (2pt) node[anchor=west]{I};
+		\filldraw[black] (-1,1) circle (2pt) node[anchor=west]{J};
+		\filldraw[red] (1,1) circle (2pt) node[anchor=west]{K};
+		\filldraw[black] (-2,0) circle (2pt) node[anchor=west]{L};
+		\filldraw[black] (0,0) circle (2pt) node[anchor=west]{M};
+		\filldraw[black] (2,0) circle (2pt) node[anchor=west]{N};
+		\filldraw[black] (-1,-1) circle (2pt) node[anchor=west]{O};
+		\filldraw[red] (1,-1) circle (2pt) node[anchor=west]{P};
+		% Janat
+		\draw [red] (0,6) -- node[midway, above left, sloped] {1} (1,5);	% AB
+		\draw [red] (0,6) -- node[midway, above right, sloped] {1} (-1,5);	% AC
+		\draw (-1,5) -- node[midway, below left, sloped] {2} (0,4);	% BD
+		\draw [red] (-1,5) -- node[midway, left] {1} (-1,3);			% BE
+		\draw [red] (1,5) -- node[midway, below right, sloped] {2} (0,4);	% CD
+		\draw (1,5) -- node[midway, right] {1} (1,3);			% CF
+		\draw [red] (0,4) -- node[midway, right] {3} (0,2);			% DH
+		\draw [red] (-1,3) -- node[midway, above left, sloped] {1} (-2,2);	% EG
+		\draw (-1,3) -- node[midway, above right, sloped] {2} (0,2);	% EH
+		\draw [red] (1,3) -- node[midway, above left, sloped] {2} (0,2);	% FH
+		\draw [red] (1,3) -- node[midway, above right, sloped] {1} (2,2);	% FI
+		\draw (-2,2) -- node[midway, above right, sloped] {2} (-1,1);	% GJ
+		\draw (-2,2) -- node[midway, left] {1} (-2,0);			% GL
+		\draw (0,2) -- node[midway, above left, sloped] {3} (-1,1);	% HJ
+		\draw (0,2) -- node[midway, above right, sloped] {3} (1,1);	% HK
+		\draw (0,2) -- node[midway, right] {2} (0,0);			% HM
+		\draw [red] (2,2) -- node[midway, above left, sloped] {2} (1,1);	% IK
+		\draw (2,2) -- node[midway, right] {1} (2,0);			% IN
+		\draw (-1,1) -- node[midway, left] {2} (-1,-1);			% JO
+		\draw [red] (1,1) -- node[midway, right] {2} (1,-1);			% KP
+		\draw (-2,0) -- node[midway, below left, sloped] {1} (-1,-1);	% LO
+		\draw (0,0) -- node[midway, below right, sloped] {1} (-1,-1);	% MO
+		\draw (0,0) -- node[midway, above right, sloped] {1} (1,-1);	% MP
+		\draw (2,0) -- node[midway, below right, sloped] {1} (1,-1);	% NP
+		\end{tikzpicture}
+		\caption{DFS referenssigraafissa}\label{refDFS}
+	\end{subfigure}
+	\caption{BFS ja DFS referenssigraafissa}\label{refPlusBasics}
+\end{figure}
+
+\begin{algorithm}
 \caption{Esimerkki BFS-algoritmista}\label{BFSEsim}
 \begin{algoritmic}
 \Procedure{BFSEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
@@ -27,7 +189,7 @@ BFS-algoritmille:
 	\State $kasiteltavat.lisaaLoppuun(nykyinen=lahtosolmu;vanhempi=NULL)$
 	\While{$kasiteltavat\not=tyhjaLista$}
 		\State $kasiteltava \gets kasiteltavat.poistaEnsimmainen()$
-		\State $vieraillut.lisaaLoppuun(kasiteltavat)$
+		\State $vieraillut.lisaaLoppuun(kasiteltava.nykyinen)$
 		\If{$kasiteltava.nykyinen = maalisolmu$}
 			\State $polku \gets tyhjaLista$
 			\While{$kasiteltava.vanhempi\not=NULL$}
@@ -38,7 +200,7 @@ BFS-algoritmille:
 			\State \textbf{return} $polku$
 		\Else
 			\ForAll{$n \in kasiteltava.nykyinen.naapurit$}
-				\State $(n \not\in kasitellyt ?  kasiteltavat.lisaaLoppuun$
+				\State $((n \not\in vieraillut) ?  kasiteltavat.lisaaLoppuun$
 				\State $(nykyinen = n;vanhempi = kasiteltava.nykyinen) :$
 				\State \textbf{continue} $;$
 			\EndFor
@@ -49,6 +211,45 @@ BFS-algoritmille:
 \end{algorithm}
 
 \section{Syvyyssuuntainen läpikäynti (DFS)}\label{dfs}
+Syvyyssuuntainen läpikäynti, eli syvyyshaku (Depth Fitst Search, DFS) on 
+polunetsintäalgoritmi, joka on myös epäinformoitu sokeaan hakuun perustuva 
+polunetsintäalgoritmi, niin kuin BFS.\cite{applSciLawande} Algoritmit eroavat 
+keskenään siinä, missä järjestyksessä ne käyvät graafin solmut läpi. Siinä, 
+missä BFS muodostaa eri tasoja ja käy graafin läpi taso kerrallaan, DFS 
+valitsee jokaisella solmulla yhden haaran, jota se lähtee seuraamaan 
+lehtisolmuihin asti.\cite{DFSMapColoring} Lehtisolmuja ovat ne, jossa minkään 
+haaran kaari ei etene läpikäymättömään solmuun.\cite{DFSMapColoring} Tällöin 
+palataan lehdistä poispäin niin kauan, että löytyy haara, missä on 
+läpikäymättömiä solmuja, jolloin käydään sen haaran pohjalla. Prosessia 
+toistetaan, kunnes polku löytyy. \par
+	Ajetaan \textcite{DFSMapColoring} perusteella kirjoitetun, 
+ohjelmalistauksen \ref{DFSEsim} mukaista DFS-algoritmia graafissa 
+\ref{refGraf}. Ratkaistaan sama ongelma ja tehdään samat lähtöoletukset kuin 
+aliluvussa \ref{bfs}.
+
+\begin{algorithm}
+\caption{Esimerkki DFS-algoritmista}\label{DFSEsim}
+\begin{algorithmic}
+\Procedure{DFSEsimerkki}{$graafidata,lahtosolmu,maalisolmu,gVieraillut$}
+	\State $vieraillut \gets gVieraillut$
+	\State $vieraillut.lisaaLoppuun(lahtosolmu)$
+	\ForAll{$n \in graafidata.naapurit(lahtosolmu)$}
+		\If{$n \not\in vieraillut$}
+			\If{$n \not= maalisolmu$}
+				\State $polku = DFSEsimerkki(graafidata,n,maalisolmu,vieraillut)$
+			\Else
+				\State \textbf{return} $[n]$
+			\EndIf
+		\EndIf
+	\EndFor
+	\If{$polku \not= NULL$}
+		\State $polku.lisaaAlkuun(lahtosolmu)$
+	\EndIf
+	\State \textbf{return} $polku$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \section{Dijkstran algoritmi}\label{dijkstra}
 \section{A*-algoritmi}\label{aStar}
 \section{Hierarkinen polunetsintä}\label{hpa}
