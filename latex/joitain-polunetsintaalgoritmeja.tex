@@ -20,7 +20,7 @@ Tason 1 muodostavat siihen yhteydessä olevat solut E, J ja L. Tason 2 soluja
 ovat tason 1 soluissa kiinni olevat solut, eli B, H ja O. Solmua G ei 
 huomioida, koska siellä on jo käyty. Joitain solmuja voidaan kuitenkin käydä 
 läpi useasti, jos sinne on useampi polku. Algoritmin ajo graafissa 
-\ref{refGraf} johti kuvan \ref{refBFS} lopputulokseen, jossa käytiin läpi 
+\ref{refGraf} johtaa kuvan \ref{refBFS} lopputulokseen, jossa käytiin läpi 
 syaaninväriset kaaret ja löydettiin punaisella merkitty polku G-E-H-K-P. \par
 	Ohjelmalistauksen \ref{BFSEsim} algoritmi lopettaa etsinnän 
 löydettyään yhden polun, mutta jos algoritmiin ei lisätä tätä lopetusehdoksi, 
@@ -199,10 +199,10 @@ kaarten suuresta määrästä.
 			\State $polku.lisaaAlkuun(lahtosolmu)$
 			\State \textbf{return} $polku$
 		\Else
-			\ForAll{$n \in kasiteltava.nykyinen.naapurit$}
+			\ForAll{$n \in graafidata.naapurit(kasiteltava.nykyinen)$}
 				\State $((n \not\in vieraillut) ?  kasiteltavat.lisaaLoppuun$
 				\State $(nykyinen = n;vanhempi = kasiteltava.nykyinen) :$
-				\State \textbf{continue} $;$
+				\State \textbf{continue} $ä$
 			\EndFor
 		\EndIf
 	\EndWhile
@@ -225,7 +225,14 @@ toistetaan, kunnes polku löytyy. \par
 	Ajetaan \textcite{DFSMapColoring} perusteella kirjoitetun, 
 ohjelmalistauksen \ref{DFSEsim} mukaista DFS-algoritmia graafissa 
 \ref{refGraf}. Ratkaistaan sama ongelma ja tehdään samat lähtöoletukset kuin 
-aliluvussa \ref{bfs}.
+aliluvussa \ref{bfs}. Algoritmin ajo johtaa kuvan \ref{refDFS} mukaiseen 
+lopputulokseen, jossa algoritmi löysi polun G-E-B-A-C-D-H-F-I-K-P. 
+Kuten kuvista näkyy, DFS-algoritmin löytämä polku on huomattavasti pidempi 
+kuin BFS-algoritmin löytämä polku. BFS käy kuitenkin läpi useamman kaaren 
+kuin DFS. DFS-algoritmin edut BFS:ään verrattuna ovatkin muistin ja 
+suoritusajan säästyminen, koska harvempi kaari käydään 
+läpi.\cite{applSciLawande} Toisaalta DFS ei löydä kaikkia mahdollisia reittejä, 
+toisin kuin BFS.\cite{applSciLawande}
 
 \begin{algorithm}
 \caption{Esimerkki DFS-algoritmista}\label{DFSEsim}
@@ -251,5 +258,142 @@ aliluvussa \ref{bfs}.
 \end{algorithm}
 
 \section{Dijkstran algoritmi}\label{dijkstra}
+Dijkstran algoritmi on Edsger Dijkstran vuonna 1956 löytämä epäinformoitu 
+polunetsintäalgoritmi.\cite{applSciLawande} Dijkstran algoritmi perustuu 
+ahneuden periaatteeseen (the principle of greedy), joka tarkoittaa että joka 
+suorituskerralla valitaan halvin eli kevyin saatavilla oleva 
+solmu.\cite{mazeGameTrilogi} Toisin kuin sokea haku, ahneuden periaate ei pidä 
+jokaista kaarta yhtä hyvänä vaihtoehtona polunetsintäprosessissa. Jokaiselle 
+kaarelle merkitään jokin hinta eli paino, jonka ahneuden periaate huomio. Jos 
+oletetaan, että graafin solmut ovat risteyksiä ja kaaret teitä, on suotavaa 
+ajatella, että eri tiet eri risteyksien välissä ovat eri pituisia, vaikka tämä 
+ei tieverkostosta rakennetussa graafissa näkyisikään. Voi tulla tilanteita, 
+joissa oikeasti lyhyempi reiti kulkee useamman solmun läpi. Tämän takia 
+graafit painotetaan. Referenssigraafissa \ref{refGraf} painot näkyvät jokaisen 
+kaaren kohdalla numeroilla. \par
+	Ajetaan \textcite{applSciLawande} perusteella kirjoitetun, 
+ohjelmalistauksen \ref{DijkstrEsim} mukaista Dijkstran algoritmia graafissa 
+\ref{refGraf}. Ratkaistaan sama ongelma ja tehdään samat lähtöoletukset kuin 
+kappaleessa \ref{bfs}. Algoritmin ajo johtaa kuvan \ref{refDijkstra} mukaiseen 
+lopputulokseen. Algoritmi löysi polun G-L-O-M-P. Tämä kulkee viiden 
+solmukohdan läpi ja on näin mitattuna yhtä pitkä kuin reitti jonka BFS löysi 
+referenssigraafista (kuva \ref{refBFS}) ja huomattavasti lyhyempi kuin 
+reitti, jonka DFS löysi referenssigraafista (kuva \ref{refDFS}). BFS ja DFS 
+eivät kuitenkaan huomioi painotusta, jonka mukaan Dijkstran algoritmin 
+löytämän polun hinta on 4, BFS-algoritmin 8 ja DFS-algoritmin 16. Dijkstran 
+algoritmin löytämä polku on siis annetussa ongelmassa optimaalisin. Dijkstran 
+algoritmia käytetäänkin usein graafiopin lyhimmän polun ongelman 
+ratkaisemiseen.\cite{IOPDijkstra} Sitä ei kuitenkaan voi käyttää 
+negatiivisilla painoarvoilla.\cite{applSciLawande} Dijkstran algoritmi on 
+kuitenkin referenssiongelmassa muisti- ja suoritusaikaintensiivisempi kuin 
+DFS, koska se käy läpi useampia kaaria (Dijksta 12 verrattuna DFS 10). Eri 
+algoritmeja vertaillaan enemmän luvussa \ref{benchmarking}.
+
+\begin{figure}
+%	\begin{subfigure}[b]{0.3\textwidth}
+		\centering
+		\begin{tikzpicture}[main/.style = {draw, circle}] 
+		%Pisteet
+		\filldraw[black] (0,6) circle (2pt) node[anchor=west]{A};
+		\filldraw[black] (-1,5) circle (2pt) node[anchor=west]{B};
+		\filldraw[black] (1,5) circle (2pt) node[anchor=west]{C};
+		\filldraw[black] (0,4) circle (2pt) node[anchor=west]{D};
+		\filldraw[black] (-1,3) circle (2pt) node[anchor=west]{E};
+		\filldraw[black] (1,3) circle (2pt) node[anchor=west]{F};
+		\filldraw[red] (-2,2) circle (2pt) node[anchor=west]{G};
+		\filldraw[black] (0,2) circle (2pt) node[anchor=west]{H};
+		\filldraw[black] (2,2) circle (2pt) node[anchor=west]{I};
+		\filldraw[black] (-1,1) circle (2pt) node[anchor=west]{J};
+		\filldraw[black] (1,1) circle (2pt) node[anchor=west]{K};
+		\filldraw[red] (-2,0) circle (2pt) node[anchor=west]{L};
+		\filldraw[red] (0,0) circle (2pt) node[anchor=west]{M};
+		\filldraw[black] (2,0) circle (2pt) node[anchor=west]{N};
+		\filldraw[red] (-1,-1) circle (2pt) node[anchor=west]{O};
+		\filldraw[red] (1,-1) circle (2pt) node[anchor=west]{P};
+		% Janat
+		\draw [cyan] (0,6) -- node[midway, above left, sloped] {1} (1,5);	% AB
+		\draw [cyan] (0,6) -- node[midway, above right, sloped] {1} (-1,5);	% AC
+		\draw [cyan] (-1,5) -- node[midway, below left, sloped] {2} (0,4);	% BD
+		\draw [cyan] (-1,5) -- node[midway, left] {1} (-1,3);			% BE
+		\draw (1,5) -- node[midway, below right, sloped] {2} (0,4);	% CD
+		\draw (1,5) -- node[midway, right] {1} (1,3);			% CF
+		\draw (0,4) -- node[midway, right] {3} (0,2);			% DH
+		\draw [cyan] (-1,3) -- node[midway, above left, sloped] {1} (-2,2);	% EG
+		\draw [cyan] (-1,3) -- node[midway, above right, sloped] {2} (0,2);	% EH
+		\draw (1,3) -- node[midway, above left, sloped] {2} (0,2);	% FH
+		\draw (1,3) -- node[midway, above right, sloped] {1} (2,2);	% FI
+		\draw [cyan] (-2,2) -- node[midway, above right, sloped] {2} (-1,1);	% GJ
+		\draw [red] (-2,2) -- node[midway, left] {1} (-2,0);			% GL
+		\draw (0,2) -- node[midway, above left, sloped] {3} (-1,1);	% HJ
+		\draw (0,2) -- node[midway, above right, sloped] {3} (1,1);	% HK
+		\draw (0,2) -- node[midway, right] {2} (0,0);			% HM
+		\draw (2,2) -- node[midway, above left, sloped] {2} (1,1);	% IK
+		\draw (2,2) -- node[midway, right] {1} (2,0);			% IN
+		\draw [cyan] (-1,1) -- node[midway, left] {2} (-1,-1);			% JO
+		\draw (1,1) -- node[midway, right] {2} (1,-1);			% KP
+		\draw [red] (-2,0) -- node[midway, below left, sloped] {1} (-1,-1);	% LO
+		\draw [red] (0,0) -- node[midway, below right, sloped] {1} (-1,-1);	% MO
+		\draw [red] (0,0) -- node[midway, above right, sloped] {1} (1,-1);	% MP
+		\draw (2,0) -- node[midway, below right, sloped] {1} (1,-1);	% NP
+		\end{tikzpicture}
+		\caption{Dijkstran algoritmi referenssigraafissa}\label{refDijkstra}
+%	\end{subfigure}
+%	\hfill
+\end{figure}
+
+\begin{algorithm}
+\caption{Esimerkki Dijkstran algoritmista (osa 1)}\label{DijkstrEsim}
+\begin{algorithmic}
+\Procedure{DijkstraEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $kasiteltava \gets (nykyinen=lahtosolmu;vanhempi=NULL)$
+	\State $vieraillut \gets tyhjaLista$
+	\State $hintaLog \gets tyhjaSanakirja$
+	\State $hintaLog.lisaa(AVAIN=lahtosolmu;ARVO=0)$
+	\While{$vieraillut.pituus \not= graafidata.pituus$}
+		\State $vieraillut.lisaaLoppuun(kasiteltava)$
+		\State $minHinta \gets (solmulta=NULL;solmulle=NULL;$
+		\State $hinta=graafidata.maxHinta+1)$
+		\For{$v \in vieraillut$}
+			\For{$n \in graafidata.naapurit(v)$}
+				\If{$(nykyinen=n;vanhempi=v) \not\in vieraillut AND $\\ \quad \quad \quad \quad \quad \quad $ hintaLog[v]+graafidata.hinta(v,n) < minHinta.hinta$}
+					\State $minHinta \gets (solmulta=n;solmulle=v;$
+					\State $hinta=hintaLog[v]+graafidata.hinta(v,n))$
+				\EndIf
+			\EndFor
+		\EndFor
+		\State $hintaLog.lisaa$
+		\State $(AVAIN=minHinta.solmulle;ARVO=minHinta.hinta)$
+
+% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle. HUOM! hiukan rikki!
+\algstore{dijkstrabreak}
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{Esimerkki Dijkstran algoritmista (osa 2)}
+\begin{algorithmic}
+\algrestore{dijkstrabreak}
+
+		\State $kasiteltava \gets$
+		\State $(nykyinen=minHinta.solmulle;vanhempi=minHinta.Solmulta)$
+		\If{$kasiteltava.nykyinen = maalisolmu$}
+			\State $polkuOK \gets$ \textbf{ tosi}
+			\State \textbf{break} $ä$
+		\EndIf
+	\EndWhile
+	\If{$polkuOK$}
+		\State $polku \gets tyhjaLista$
+		\While{$kasiteltava.vanhempi \not= NULL$}
+			\State $polku.lisaaAlkuun(kasiteltava.nykyinen)$
+			\State $kasiteltava \gets kasiteltava.vanhempi$
+		\EndWhile
+		\State $polku.lisaaAlkuun(lahtosolmu)$
+		\State \textbf{return} $polku$
+	\Else
+		\State \textbf{return} $NULL$
+	\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \section{A*-algoritmi}\label{aStar}
 \section{Hierarkinen polunetsintä}\label{hpa}

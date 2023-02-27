@@ -31,3 +31,11 @@ Lanelet2
 Breadth First Search Approach for Shortest Path Solution in Cartesian Area
 https://iopscience.iop.org/article/10.1088/1742-6596/1019/1/012038/pdf
 BFSRahim
+
+A Kind of Map Coloring Algorithm Considering of Depth First Search
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/6322464
+DFSMapColoring
+
+Analysis of Dijkstra’s Algorithm and A* Algorithm in Shortest Path Problem
+https://iopscience.iop.org/article/10.1088/1742-6596/1566/1/012061/pdf
+IOPDijkstra
