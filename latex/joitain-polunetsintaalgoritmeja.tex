@@ -274,7 +274,7 @@ kaaren kohdalla numeroilla. \par
 	Ajetaan \textcite{applSciLawande} perusteella kirjoitetun, 
 ohjelmalistauksen \ref{DijkstrEsim} mukaista Dijkstran algoritmia graafissa 
 \ref{refGraf}. Ratkaistaan sama ongelma ja tehdään samat lähtöoletukset kuin 
-kappaleessa \ref{bfs}. Algoritmin ajo johtaa kuvan \ref{refDijkstra} mukaiseen 
+aliluvussa \ref{bfs}. Algoritmin ajo johtaa kuvan \ref{refDijkstra} mukaiseen 
 lopputulokseen. Algoritmi löysi polun G-L-O-M-P. Tämä kulkee viiden 
 solmukohdan läpi ja on näin mitattuna yhtä pitkä kuin reitti jonka BFS löysi 
 referenssigraafista (kuva \ref{refBFS}) ja huomattavasti lyhyempi kuin 
@@ -290,7 +290,7 @@ DFS, koska se käy läpi useampia kaaria (Dijksta 12 verrattuna DFS 10). Eri
 algoritmeja vertaillaan enemmän luvussa \ref{benchmarking}.
 
 \begin{figure}
-%	\begin{subfigure}[b]{0.3\textwidth}
+	\begin{subfigure}[b]{0.5\textwidth}
 		\centering
 		\begin{tikzpicture}[main/.style = {draw, circle}] 
 		%Pisteet
@@ -337,8 +337,57 @@ algoritmeja vertaillaan enemmän luvussa \ref{benchmarking}.
 		\draw (2,0) -- node[midway, below right, sloped] {1} (1,-1);	% NP
 		\end{tikzpicture}
 		\caption{Dijkstran algoritmi referenssigraafissa}\label{refDijkstra}
-%	\end{subfigure}
+	\end{subfigure}
 %	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\begin{tikzpicture}[main/.style = {draw, circle}] 
+		%Pisteet
+		\filldraw[black] (0,6) circle (2pt) node[anchor=west]{A};
+		\filldraw[black] (-1,5) circle (2pt) node[anchor=west]{B};
+		\filldraw[black] (1,5) circle (2pt) node[anchor=west]{C};
+		\filldraw[black] (0,4) circle (2pt) node[anchor=west]{D};
+		\filldraw[black] (-1,3) circle (2pt) node[anchor=west]{E};
+		\filldraw[black] (1,3) circle (2pt) node[anchor=west]{F};
+		\filldraw[red] (-2,2) circle (2pt) node[anchor=west]{G};
+		\filldraw[black] (0,2) circle (2pt) node[anchor=west]{H};
+		\filldraw[black] (2,2) circle (2pt) node[anchor=west]{I};
+		\filldraw[black] (-1,1) circle (2pt) node[anchor=west]{J};
+		\filldraw[black] (1,1) circle (2pt) node[anchor=west]{K};
+		\filldraw[red] (-2,0) circle (2pt) node[anchor=west]{L};
+		\filldraw[red] (0,0) circle (2pt) node[anchor=west]{M};
+		\filldraw[black] (2,0) circle (2pt) node[anchor=west]{N};
+		\filldraw[red] (-1,-1) circle (2pt) node[anchor=west]{O};
+		\filldraw[red] (1,-1) circle (2pt) node[anchor=west]{P};
+		% Janat
+		\draw (0,6) -- node[midway, above left, sloped] {1} (1,5);	% AB
+		\draw (0,6) -- node[midway, above right, sloped] {1} (-1,5);	% AC
+		\draw (-1,5) -- node[midway, below left, sloped] {2} (0,4);	% BD
+		\draw (-1,5) -- node[midway, left] {1} (-1,3);			% BE
+		\draw (1,5) -- node[midway, below right, sloped] {2} (0,4);	% CD
+		\draw (1,5) -- node[midway, right] {1} (1,3);			% CF
+		\draw (0,4) -- node[midway, right] {3} (0,2);			% DH
+		\draw (-1,3) -- node[midway, above left, sloped] {1} (-2,2);	% EG
+		\draw (-1,3) -- node[midway, above right, sloped] {2} (0,2);	% EH
+		\draw (1,3) -- node[midway, above left, sloped] {2} (0,2);	% FH
+		\draw (1,3) -- node[midway, above right, sloped] {1} (2,2);	% FI
+		\draw (-2,2) -- node[midway, above right, sloped] {2} (-1,1);	% GJ
+		\draw [red] (-2,2) -- node[midway, left] {1} (-2,0);			% GL
+		\draw (0,2) -- node[midway, above left, sloped] {3} (-1,1);	% HJ
+		\draw (0,2) -- node[midway, above right, sloped] {3} (1,1);	% HK
+		\draw (0,2) -- node[midway, right] {2} (0,0);			% HM
+		\draw (2,2) -- node[midway, above left, sloped] {2} (1,1);	% IK
+		\draw (2,2) -- node[midway, right] {1} (2,0);			% IN
+		\draw (-1,1) -- node[midway, left] {2} (-1,-1);			% JO
+		\draw (1,1) -- node[midway, right] {2} (1,-1);			% KP
+		\draw [red] (-2,0) -- node[midway, below left, sloped] {1} (-1,-1);	% LO
+		\draw [red] (0,0) -- node[midway, below right, sloped] {1} (-1,-1);	% MO
+		\draw [red] (0,0) -- node[midway, above right, sloped] {1} (1,-1);	% MP
+		\draw (2,0) -- node[midway, below right, sloped] {1} (1,-1);	% NP
+		\end{tikzpicture}
+		\caption{A* referenssigraafissa}\label{refAStar}
+	\end{subfigure}
+	\caption{Dijkstran algoritmi ja A* referenssigraafissa}\label{DijkstraAStarFigs}
 \end{figure}
 
 \begin{algorithm}
@@ -364,7 +413,7 @@ algoritmeja vertaillaan enemmän luvussa \ref{benchmarking}.
 		\State $hintaLog.lisaa$
 		\State $(AVAIN=minHinta.solmulle;ARVO=minHinta.hinta)$
 
-% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle. HUOM! hiukan rikki!
+% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle. 
 \algstore{dijkstrabreak}
 \end{algorithmic}
 \end{algorithm}
@@ -396,4 +445,129 @@ algoritmeja vertaillaan enemmän luvussa \ref{benchmarking}.
 \end{algorithm}
 
 \section{A*-algoritmi}\label{aStar}
+A* (luetaan A-tähti tai A-star) on informoitu polunetsintäalgoritmi, joka 
+täydentää Dijkstran algoritmia soveltamalla siihen heuristista 
+funktiota.\cite{MathewAndMalathy} Heuristinen funktio on jokin matemaattinen 
+funktio, joka palauttaa hinnan, joka mittaa että kuinka hyvä tutkittava 
+solmu on ongelman ratkaisun kannalta. Kuten Dijkstran algoritmi, myös A* 
+valitsee tutkittavakseen halvimmat polut ensin.\cite{DelaunayVoronoiAStar} 
+Dijkstran algoritmissä solmukohdan \textbf{n} läpikäynnin hinnan funktio 
+\textbf{F(n)} on sama kuin lähtösolmusta solmulle \textbf{n} johtavan 
+halvimman polun funktio \textbf{G(n)}. Siis Dijkstran algoritmissä 
+\textbf{F(n) = G(n)}.\cite{MathewAndMalathy} Sen sijaan A* algoritmissa 
+yksittäisen solmun \textbf{n} läpikäynnin hinta on 
+\textbf{F(n) = G(n) + H(n)}, jossa \textbf{H(n)} on heuristisen funktion 
+palauttama arvo solmukohdalle \textbf{n}.\cite{DelaunayVoronoiAStar} 
+Dijkstran algoritmi voidaan myös käsittää A*-algoritminä, jossa 
+\textbf{H(n) = 0}.\cite{MathewAndMalathy}\par 
+	A*-algoritmin kanssa voidaan käyttää eri heuristisia funktioita 
+riippuen siitä, että mikä heuristiikka toimii parhaiten tutkittavan ongelman 
+kanssa. Tyypillisesti heuristiset funktiot mittaavat käytännössä tutkittavan 
+solmun etäisyyttä maalisolmusta tai liikkeen suuntaa.\cite{ProcediaAStar} 
+Tyypillisiä heuristisia funktioita ovat tutkittavan solmun ja maalisolmun 
+välinen Manhattan-etäisyys ja Euklidinen etäisyys.\cite{MathewAndMalathy} 
+Manthattan etäisyys tarkoittaa kahden pisteen $P = (x_1,y_1)$ ja 
+$Q = (x_2,y_2)$ välistä etäisyyttä, olettaen liikutaan vain x- ja 
+y-akselien suuntaisesti.\cite{MathewAndMalathy}
+
+\[ d_{Manhattan}(P,Q) =  |x_1 - x_2| + |y_1 - y_2|\]
+\par
+
+	Ajetaan \textcite{MathewAndMalathy} perusteella kirjoitetun, 
+ohjelmalistauksen \ref{AStarEsim} mukaista A*-algoritmia graafissa 
+\ref{refGraf} ja tehdään samat lähtöoletukset kuin aliluvussa \ref{bfs}. 
+Käytetään heuristisena funktiona janan pituuden kaavaa
+
+\[ d(P) = \sqrt{(x_{Maalisolmu}-x_P)^2 + (y_{Maalisolmu}-y_P)^2} \]
+
+, jossa \textbf{P} on $(x,y)$ muotoinen piste. Algoritmin ajo johtaa kuvan 
+\ref{refAStar} mukaiseen lopputulokseen. Algoritmin löytämä polku G-L-O-M-P on 
+täysin sama kuin Dijkstran algoritmin löytämä polku kuvassa 
+\ref{refDijkstra}. Tähän päädyttiin kuitenkin huomattavasti nopeammin, koska 
+heuristinen funktio ohjasi A*-algoritmia etsimään reittiä oikeasta suunnasta. 
+\par
+	A* on hyvin suosittu algoritmi käytännön sovelluksissa, koska se on 
+monipuolinen, helposti toteutettava ja tehokas. Se on useimmiten se algoritmi, 
+josta lähdetään liikkeelle kun polunetsintää pitää käytännössä soveltaa 
+oikean elämän ongelmiin, esimerkiksi videopelikehityksessä tai 
+robotiikassa.\cite{ProcediaAStar} A* toimii myös pohjana monelle muulle 
+algoritmille, koska sitä on erittäin helppo muokata ja 
+parannella.\cite{ProcediaAStar} Esimerkiksi D*-algoritmi on A*-algoritmiin 
+perustuva polunetsintäalgoritmi, joka on dynaaminen, eli se kykenee 
+reagoimaan etsintä-alueen muuttumiseen.\cite{applSciLawande} Hierarkisen 
+polunetsinnän A* (Hierarchical Pathfinding A*, HPA*) on hierarkiseen 
+polunetsintään kehitetty A*-variantti. Lisää hierarkisesta polunetsinnästä 
+aliluvussa \ref{hpa}.\cite{applSciLawande} \par
+	Polunetsintään liittyvissä tieteellisissä tutkimuksissa A* on myös 
+suosittu lähtökohta. Usein nämä tutkimukset kehittävät jonkun A* variantin 
+johonkin spesifiseen käyttötarkoitukseen.\cite{ProcediaAStar} Esimerkiksi 
+\textcite{MathewAndMalathy} käyttävät tavallista A*-algoritmia, mutta 
+kehittävät siihen uudenlaisen heuristisen funktion ja 
+\textcite{DelaunayVoronoiAStar} kehittävät A*-pohjaisen polunetsintäalgoritmin 
+käytettäväksi robotiikassa.
+
+\begin{algorithm}
+\caption{Esimerkki A*-algoritmista (osa 1)}\label{AStarEsim}
+\begin{algorithmic}
+\Procedure{A*Esimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $avoinL \gets tyhjaLista$
+	\State $suljettuL \gets tyhjaLista$
+	\State $gHintaLog \gets tyhjaSanakirja$
+	\State $avoinL.lisaaLoppuun(nykyinen=lahtosolmu;vanhempi=NULL)$
+	\State $gHintaLog.lisaa(AVAIN=lahtosolmu;ARVO=0)$
+	\While{$avoinL\not=tyhjaLista$}
+		\State $minHinta \gets \infty$
+		\ForAll{$solmu \in avoinL$}
+			\If{$gHintaLog[solmu.nykyinen]+heuristinenArvo[solmu.nykyinen] $\\ \quad \quad \quad \quad \quad$< minHinta$}
+				\State $minHinta \gets$
+				\State $gHintaLog[solmu.nykyinen]+heuristinenArvo[solmu.nykyinen]$
+				\State $nykyinen \gets solmu$
+			\EndIf
+		\EndFor
+		\State $avoinL.poista(avoinL.indeksi(nykyinen))$
+		\State $suljettuL.lisaaLoppuun(nykyinen)$
+		\For{$n \in graafidata.naapurit(nykyinen.nykyinen)$}
+			\If{$n = maalisolmu$}
+				\State $nykyinen \gets (nykyinen=n;vanhempi=nykyinen.nykyinen)$
+				\State{$polku \gets tyhjaLista$}
+				\While{$nykyinen.vanhempi\not=NULL$}
+
+% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle.
+\algstore{AStarBreak}
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{Esimerkki A*-algoritmista (osa 2)}
+\begin{algorithmic}
+\algrestore{AStarBreak}
+
+					\State $polku.lisaaAlkuun(nykyinen.nykyinen)$
+					\State $nykyinen \gets nykyinen.vanhempi$
+				\EndWhile
+				\State $polku.lisaaAlkuun(lahtoarvo)$
+				\State \textbf{return} $polku$
+			\EndIf
+			\If{$n \in suljettuL.map(jasen \rightarrow jasen.nykyinen)$}
+				\State \textbf{continue} $ä$
+			\Else
+				\If{$n \not\in avoinL.map(jasen \rightarrow jasen.nykyinen)$}
+					\State $avoinL.lisaaLoppuun$
+					\State $(nykyinen=n;vanhempi=nykyinen.nykyinen)$
+					\State $gHintaLog.lisaa(AVAIN=n;ARVO=$
+					\State $gHintaLog(nykyinen.nykyinen)+$
+					\State $graafidata.hinta(nykyinen.nykyinen,n))$
+				\Else
+					\If{$gHintaLog[n] > gHintaLog(nykyinen.nykyinen)+$\\ \quad \quad \quad \quad \quad \quad \quad$graafidata.hinta(nykyinen.nykyinen,n)$}
+						\State $gHintaLog[n] \gets HintaLog(nykyinen.nykyinen)+$ 
+						\State $graafidata.hinta(nykyinen.nykyinen,n)$
+					\EndIf
+				\EndIf
+			\EndIf
+		\EndFor
+	\EndWhile
+	\State \textbf{return} $NULL$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
 \section{Hierarkinen polunetsintä}\label{hpa}

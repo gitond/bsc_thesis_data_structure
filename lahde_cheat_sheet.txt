@@ -39,3 +39,7 @@ DFSMapColoring
 Analysis of Dijkstra’s Algorithm and A* Algorithm in Shortest Path Problem
 https://iopscience.iop.org/article/10.1088/1742-6596/1566/1/012061/pdf
 IOPDijkstra
+
+A Systematic Literature Review of A* Pathfinding
+https://www.sciencedirect.com/science/article/pii/S1877050921000399
+ProcediaAStar
