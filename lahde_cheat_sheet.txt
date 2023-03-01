@@ -43,3 +43,7 @@ IOPDijkstra
 A Systematic Literature Review of A* Pathfinding
 https://www.sciencedirect.com/science/article/pii/S1877050921000399
 ProcediaAStar
+
+Regions Discovery Algorithm for Pathfinding in Grid Based Maps
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9253162/references#references
+rda

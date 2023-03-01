@@ -1,0 +1,200 @@
+\appchapter{Polunetsintäalgoritmien pesudokooditoteutukset}
+Tämä liitedokumentti sisältää tutkielmassa käsiteltyjen 
+polunetsintäalgoritmien pseudokooditoteutukset.
+
+\begin{algorithm}
+\caption{Esimerkki BFS-algoritmista}\label{BFSEsim}
+\begin{algoritmic}
+\Procedure{BFSEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $vieraillut \gets tyhjaLista$
+	\State $kasiteltavat \gets tyhjaLista$
+	\State $kasiteltavat.lisaaLoppuun(nykyinen=lahtosolmu;vanhempi=NULL)$
+	\While{$kasiteltavat\not=tyhjaLista$}
+		\State $kasiteltava \gets kasiteltavat.poistaEnsimmainen()$
+		\State $vieraillut.lisaaLoppuun(kasiteltava.nykyinen)$
+		\If{$kasiteltava.nykyinen = maalisolmu$}
+			\State $polku \gets tyhjaLista$
+			\While{$kasiteltava.vanhempi\not=NULL$}
+				\State $polku.lisaaAlkuun(kasiteltava.nykyinen)$
+				\State $kasiteltava \gets kasiteltava.vanhempi$
+			\EndWhile
+			\State $polku.lisaaAlkuun(lahtosolmu)$
+			\State \textbf{return} $polku$
+		\Else
+			\ForAll{$n \in graafidata.naapurit(kasiteltava.nykyinen)$}
+				\State $((n \not\in vieraillut) ?  kasiteltavat.lisaaLoppuun$
+				\State $(nykyinen = n;vanhempi = kasiteltava.nykyinen) :$
+				\State \textbf{continue} $ä$
+			\EndFor
+		\EndIf
+	\EndWhile
+\EndProcedure
+\end{algoritmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Esimerkki DFS-algoritmista}\label{DFSEsim}
+\begin{algorithmic}
+\Procedure{DFSEsimerkki}{$graafidata,lahtosolmu,maalisolmu,gVieraillut$}
+	\State $vieraillut \gets gVieraillut$
+	\State $vieraillut.lisaaLoppuun(lahtosolmu)$
+	\ForAll{$n \in graafidata.naapurit(lahtosolmu)$}
+		\If{$n \not\in vieraillut$}
+			\If{$n \not= maalisolmu$}
+				\State $polku = DFSEsimerkki(graafidata,n,maalisolmu,vieraillut)$
+			\Else
+				\State \textbf{return} $[n]$
+			\EndIf
+		\EndIf
+	\EndFor
+	\If{$polku \not= NULL$}
+		\State $polku.lisaaAlkuun(lahtosolmu)$
+	\EndIf
+	\State \textbf{return} $polku$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Esimerkki Dijkstran algoritmista (osa 1)}\label{DijkstrEsim}
+\begin{algorithmic}
+\Procedure{DijkstraEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $kasiteltava \gets (nykyinen=lahtosolmu;vanhempi=NULL)$
+	\State $vieraillut \gets tyhjaLista$
+	\State $hintaLog \gets tyhjaSanakirja$
+	\State $hintaLog.lisaa(AVAIN=lahtosolmu;ARVO=0)$
+	\While{$vieraillut.pituus \not= graafidata.pituus$}
+		\State $vieraillut.lisaaLoppuun(kasiteltava)$
+		\State $minHinta \gets (solmulta=NULL;solmulle=NULL;$
+		\State $hinta=graafidata.maxHinta+1)$
+		\For{$v \in vieraillut$}
+			\For{$n \in graafidata.naapurit(v)$}
+				\If{$(nykyinen=n;vanhempi=v) \not\in vieraillut AND $\\ \quad \quad \quad \quad \quad \quad $ hintaLog[v]+graafidata.hinta(v,n) < minHinta.hinta$}
+					\State $minHinta \gets (solmulta=n;solmulle=v;$
+					\State $hinta=hintaLog[v]+graafidata.hinta(v,n))$
+				\EndIf
+			\EndFor
+		\EndFor
+		\State $hintaLog.lisaa$
+		\State $(AVAIN=minHinta.solmulle;ARVO=minHinta.hinta)$
+
+% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle. 
+\algstore{dijkstrabreak}
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{Esimerkki Dijkstran algoritmista (osa 2)}
+\begin{algorithmic}
+\algrestore{dijkstrabreak}
+
+		\State $kasiteltava \gets$
+		\State $(nykyinen=minHinta.solmulle;vanhempi=minHinta.Solmulta)$
+		\If{$kasiteltava.nykyinen = maalisolmu$}
+			\State $polkuOK \gets$ \textbf{ tosi}
+			\State \textbf{break} $ä$
+		\EndIf
+	\EndWhile
+	\If{$polkuOK$}
+		\State $polku \gets tyhjaLista$
+		\While{$kasiteltava.vanhempi \not= NULL$}
+			\State $polku.lisaaAlkuun(kasiteltava.nykyinen)$
+			\State $kasiteltava \gets kasiteltava.vanhempi$
+		\EndWhile
+		\State $polku.lisaaAlkuun(lahtosolmu)$
+		\State \textbf{return} $polku$
+	\Else
+		\State \textbf{return} $NULL$
+	\EndIf
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Esimerkki A*-algoritmista (osa 1)}\label{AStarEsim}
+\begin{algorithmic}
+\Procedure{A*Esimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $avoinL \gets tyhjaLista$
+	\State $suljettuL \gets tyhjaLista$
+	\State $gHintaLog \gets tyhjaSanakirja$
+	\State $avoinL.lisaaLoppuun(nykyinen=lahtosolmu;vanhempi=NULL)$
+	\State $gHintaLog.lisaa(AVAIN=lahtosolmu;ARVO=0)$
+	\While{$avoinL\not=tyhjaLista$}
+		\State $minHinta \gets \infty$
+		\ForAll{$solmu \in avoinL$}
+			\If{$gHintaLog[solmu.nykyinen]+heuristinenArvo[solmu.nykyinen] $\\ \quad \quad \quad \quad \quad$< minHinta$}
+				\State $minHinta \gets$
+				\State $gHintaLog[solmu.nykyinen]+heuristinenArvo[solmu.nykyinen]$
+				\State $nykyinen \gets solmu$
+			\EndIf
+		\EndFor
+		\State $avoinL.poista(avoinL.indeksi(nykyinen))$
+		\State $suljettuL.lisaaLoppuun(nykyinen)$
+		\For{$n \in graafidata.naapurit(nykyinen.nykyinen)$}
+			\If{$n = maalisolmu$}
+				\State $nykyinen \gets (nykyinen=n;vanhempi=nykyinen.nykyinen)$
+				\State{$polku \gets tyhjaLista$}
+				\While{$nykyinen.vanhempi\not=NULL$}
+
+% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle.
+\algstore{AStarBreak}
+\end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+\caption{Esimerkki A*-algoritmista (osa 2)}
+\begin{algorithmic}
+\algrestore{AStarBreak}
+
+					\State $polku.lisaaAlkuun(nykyinen.nykyinen)$
+					\State $nykyinen \gets nykyinen.vanhempi$
+				\EndWhile
+				\State $polku.lisaaAlkuun(lahtoarvo)$
+				\State \textbf{return} $polku$
+			\EndIf
+			\If{$n \in suljettuL.map(jasen \rightarrow jasen.nykyinen)$}
+				\State \textbf{continue} $ä$
+			\Else
+				\If{$n \not\in avoinL.map(jasen \rightarrow jasen.nykyinen)$}
+					\State $avoinL.lisaaLoppuun$
+					\State $(nykyinen=n;vanhempi=nykyinen.nykyinen)$
+					\State $gHintaLog.lisaa(AVAIN=n;ARVO=$
+					\State $gHintaLog(nykyinen.nykyinen)+$
+					\State $graafidata.hinta(nykyinen.nykyinen,n))$
+				\Else
+					\If{$gHintaLog[n] > gHintaLog(nykyinen.nykyinen)+$\\ \quad \quad \quad \quad \quad \quad \quad$graafidata.hinta(nykyinen.nykyinen,n)$}
+						\State $gHintaLog[n] \gets HintaLog(nykyinen.nykyinen)+$ 
+						\State $graafidata.hinta(nykyinen.nykyinen,n)$
+					\EndIf
+				\EndIf
+			\EndIf
+		\EndFor
+	\EndWhile
+	\State \textbf{return} $NULL$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{Esimerkki hierarkisesta polunetsintäalgoritmista}\label{HierarkkinenEsim}
+\begin{algorithmic}
+\Procedure{HierarkinenEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
+	\State $YlatasonGraafi = Alueenjakoalgoritmi.Jaa(graafidata)$
+	\State $lahtoalue \gets tyhjaGraafi$
+	\State $maalialue \gets tyhjaGraafi$
+	\State $varsinainenPolku \gets tyhjaLista$
+	\ForAll{$alue \in YlatasonGraafi$}
+		\If{$lahtosolmu \in alue$}
+			\State $lahtoalue \gets alue$
+		\EndIf
+		\If{$maalisolmu \in alue$}
+			\State $maalialue \gets alue$
+		\EndIf
+	\EndFor
+	\State $YlatasonPolku = PolunetsintaAlgoritmi(YlatasonGraafi,lahtoalue,maalialue)$
+	\ForAll{$alue \in YlatasonPolku$}
+		\State $varsinainenPolku.lisaaLoppuun($
+		\State $PolunetsintaAlgoritmi(alue,Alueenjakoalgoritmi.KriittisetPisteet(alue)))$
+	\EndFor
+	\State \textbf{Return} $varsinainenPolku$
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
