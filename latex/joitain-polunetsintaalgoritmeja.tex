@@ -344,15 +344,14 @@ funktiota.\cite{MathewAndMalathy} Heuristinen funktio on jokin matemaattinen
 funktio, joka palauttaa hinnan, joka mittaa että kuinka hyvä tutkittava 
 solmu on ongelman ratkaisun kannalta. Kuten Dijkstran algoritmi, myös A* 
 valitsee tutkittavakseen halvimmat polut ensin.\cite{DelaunayVoronoiAStar} 
-Dijkstran algoritmissa solmukohdan \textbf{n} läpikäynnin hinnan funktio 
-\textbf{F(n)} on sama kuin lähtösolmusta solmulle \textbf{n} johtavan 
-halvimman polun funktio \textbf{G(n)}. Siis Dijkstran algoritmissä 
-\textbf{F(n) = G(n)}.\cite{MathewAndMalathy} Sen sijaan A* algoritmissa 
-yksittäisen solmun \textbf{n} läpikäynnin hinta on 
-\textbf{F(n) = G(n) + H(n)}, jossa \textbf{H(n)} on heuristisen funktion 
-palauttama arvo solmukohdalle \textbf{n}.\cite{DelaunayVoronoiAStar} 
-Dijkstran algoritmi voidaan myös käsittää A*-algoritmina, jossa 
-\textbf{H(n) = 0}.\cite{MathewAndMalathy}\par 
+Dijkstran algoritmissa solmukohdan $n$ läpikäynnin hinnan funktio 
+$F(n)$ on sama kuin lähtösolmusta solmulle $n$ johtavan 
+halvimman polun funktio $G(n)$. Siis Dijkstran algoritmissä 
+$F(n) = G(n)$.\cite{MathewAndMalathy} Sen sijaan A* algoritmissa 
+yksittäisen solmun $n$ läpikäynnin hinta on $F(n) = G(n) + H(n)$, jossa $H(n)$ 
+on heuristisen funktion palauttama arvo solmukohdalle $n$.
+\cite{DelaunayVoronoiAStar} Dijkstran algoritmi voidaan myös käsittää 
+A*-algoritmina, jossa $H(n) = 0$.\cite{MathewAndMalathy}\par 
 	A*-algoritmin kanssa voidaan käyttää eri heuristisia funktioita 
 riippuen siitä, että mikä heuristiikka toimii parhaiten tutkittavan ongelman 
 kanssa. Tyypillisesti heuristiset funktiot mittaavat käytännössä tutkittavan 
@@ -373,7 +372,7 @@ Käytetään heuristisena funktiona janan pituuden kaavaa
 
 \[ d(P) = \sqrt{(x_{Maalisolmu}-x_P)^2 + (y_{Maalisolmu}-y_P)^2} \]
 
-, jossa \textbf{P} on $(x,y)$ muotoinen piste. Algoritmin ajo johtaa kuvan 
+, jossa $P$ on $(x,y)$ muotoinen piste. Algoritmin ajo johtaa kuvan 
 \ref{refAStar} mukaiseen lopputulokseen. Algoritmin löytämä polku G-L-O-M-P on 
 täysin sama kuin Dijkstran algoritmin löytämä polku kuvassa 
 \ref{refDijkstra}. Tähän päädyttiin kuitenkin huomattavasti nopeammin, koska 
