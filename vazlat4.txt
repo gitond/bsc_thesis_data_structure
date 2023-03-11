@@ -2,7 +2,7 @@ Hiukan tarkempi suunnitelma
 4. Algoritmien sovelluskohteita
 	4.1 Videopelit
 		- Pac-man ( https://github.com/AndrewSpittlemeister/Pathfinding-in-Pacman )
-		- Kaupunkisimulaatiot ( https://www.researchgate.net/publication/343237167_Game_AI_techniques_applied_to_city_simulations )
+		- Dragon Age: Origins ( https://ojs.aaai.org/index.php/AIIDE/article/view/12400 )
 	4.2 Karttaohjelmat
 		- Eri pläänäyssessio
 	4.3 Robotiikka
