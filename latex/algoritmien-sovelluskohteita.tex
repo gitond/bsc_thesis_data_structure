@@ -3,21 +3,60 @@
 \section{Videopelit}\label{videopelit}
 Monet nykyaikaiset polunetsintäalgoritmeihin liittyvät tutkimukset tehdään 
 videopeliteollisuuden 
-käyttöön.\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogy} 
+käyttöön.\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi} 
 Tämä johtuu siitä, että videopeleissä törmätään usein tilanteisiin, jossa 
-ei-pelattavien hahmojen (non-playable character, NPC) pitää liikkua 
-videopelikartalla niin, että pelaaja ei suoraan itse ohjaa niitä. Tällöin 
-pelin on itse löydettävä reitti kahden pisteen välille. Kun 
-polunetsintäalgoritmeja toteutetaan videopeleissä, joudutaan kiinnittämään 
-huomiota muutamiin erityisvaatimuksiin. Polunetsintäalgoritmien ajaminen 
-ei saa olla liian resurssi-intensiivistä, eli sen pitää pyrkiä kuluttamaan 
-tietokoneen muistia ja suoritinaikaa mahdollisimman vähän. Jotta 
+NPC-hahmojen pitää liikkua videopelikartalla niin, että pelaaja ei suoraan 
+itse ohjaa niitä. Tällöin pelin on itse löydettävä reitti kahden pisteen 
+välille. Kun polunetsintäalgoritmeja toteutetaan videopeleissä, joudutaan 
+kiinnittämään huomiota muutamiin erityisvaatimuksiin. Polunetsintäalgoritmien 
+ajaminen ei saa olla liian resurssi-intensiivistä, eli sen pitää pyrkiä 
+kuluttamaan tietokoneen muistia ja suoritinaikaa mahdollisimman vähän. Jotta 
 resurssi-intensiivisyydeltä vältyttäisiin, voidaan löystää polun 
 optimaalisuuteen liittyviä vaatimuksia, jolloin polun ei tarvitse olla enää 
 lyhin mahdollinen.\cite{MathewAndMalathy} \par
 	Esimerkiksi reaaliaikaisissa strategiapeleissä (real-time strategy, 
 RTS) pelaaja komentaa usein eri yksiköitä eri puolelle pelialuetta 
-mekitsemällä niille maalipisteitä. 
+mekitsemällä niille maalipisteitä. Näitä yksiköitä voi olla jopa satoja, 
+joille pitää löytää polut suurella etsintä-alueella huomioiden mahdollisesti 
+muut alueella liikkuvat yksiköt, sekä pelin säännöt siitä, että miten eri 
+yksiköt käytännössä voivat liikkua.\cite{pPacman}\cite{MathewAndMalathy} 
+Nämä monimutkaiset laskutoimitukset on suoritettava pelin logiikan 
+vaatimalla nopeudella. Esimerkiksi videopeliyhtiö BioWare on asettanut 
+säännön, jonka mukaan kaikkien pelialueella liikkuvien agenttien polunetsintä 
+on kyttävä suorittamaan 1-3 ms aikana.\cite{pPacman} \par
+	\textcite{pPacman} kehittivät Pathfinding-in-Pacman-projektin, jossa 
+he sovelsivat polunetsintäalgoritmeja Pac-Manin kaltaiseen peliin. Pelissä 
+pelihahmo liikkuu labyrintissä yrittäen kerätä pisteitä, samalla kun sitä 
+jahtaavat vihollishahmoina toimivat haamut. Pelaaja voittaa kerättyään kaikki 
+pisteet, ja häviää kun haamut koskevat häntä. Peli sisältää toteutukset BFS- 
+ja A*-algoritmeista, sekä pelin tarkoituksiin muokatusta A*-algoritmistä, 
+jota projektin raportti kutsuu Context Dependent Subgoaling A*-algoritmiksi
+(kontekstiriippuvaisesti osatavoitteistava A*, CDSA*) ja ohjelmakoodi kutsuu 
+subGoalAStar-algoritmiksi. CSDA* etsii polun haamulta pelaajahahmolle 
+A*-algoritmilla, mikäli haamu on tarpeeksi lähellä pelaajahahmoa. Muussa 
+tapauksessa CSDA* palauttaa ainoastaan suunnan, jolla haamu pääsee lähemmäs 
+pelaajahahmoa. Tällä tavoin säästetään järjestelmän resursseja rajoittamalla 
+tehtävien laskujen määrää. Pelissä käytetään polunetsintäalgoritmeja 
+haamujen ja pelaajahahmojen välisen polun löytämiseksi ja A*- ja 
+CSDA*-algoritmit käyttävät heuristiikkana Manhattan-etäisyyttä. \par
+	\textcite{SturtevantDAO} vertaavat tutkimuksessaan erilaisia 
+suurelle etsintäalueelle soveltuvia polunetsintätekniikoita Dragon Age: 
+Origins-videopelissä (DAO) käytettyyn polunetsintään. Nämä 
+polunetsintätekniikat ovat abstraktiahierarkien käyttö, parempien 
+heurististen funktioiden käyttö, sekä sopimushierarkioiden (Contrarction 
+Hierarchy, CH) käyttö. Abstraktihierarkia ja CH ovat hierarkisessa 
+polunetsinnässä (luku \ref{hpa}) käytettäviä tapoja muodostaa ylätason 
+graafi. Abstraktihierarkia muodostaa ylätason graafin niin, että 
+varsinaisen etsintäalueen eri osa-alueet ovat ylätason graafin solmuja, kun 
+taas CH muodostaa ylätason graafin laskemalla alkuperäisen graafin jokaiselle 
+solmulle tärkeystason (importance level) ja poistamalla vähemmän tärkeät 
+solmut graafista. \textcite{SturtevantDAO} osoittivat, että hierarkinen 
+polunetsintä joko abstraktiohierarkiaa tai CH:ta käyttäen soveltui parhaiten 
+polunetsintään DAO:n kaltaisissa videopeleissä, koska näillä menetelmillä 
+käytettiin vähiten suoritinta ja muistia. DAO käyttää abstraktiohierarkiaa, 
+mutta \textcite{SturtevantDAO} mainitsevat, että pelin polunetsintää olisi 
+voinut tehostaa entisestään käyttämällä suurempia osa-alueita ylätason 
+graafin rakentamiseen.
 
 \section{Karttaohjelmat}\label{karttaohjelmat}
 \section{Robotiikka}\label{robotiikka}

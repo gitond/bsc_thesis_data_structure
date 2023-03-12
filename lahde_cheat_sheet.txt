@@ -47,3 +47,11 @@ ProcediaAStar
 Regions Discovery Algorithm for Pathfinding in Grid Based Maps
 https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9253162/
 rda
+
+Pathfinding-in-Pacman
+https://github.com/AndrewSpittlemeister/Pathfinding-in-Pacman
+pPacman
+
+A Comparison of High-Level Approaches for Speeding Up Pathfinding
+https://ojs.aaai.org/index.php/AIIDE/article/view/12400/12259
+SturtevantDAO
