@@ -4,7 +4,11 @@ Hiukan tarkempi suunnitelma
 		- Pac-man ( https://github.com/AndrewSpittlemeister/Pathfinding-in-Pacman )
 		- Dragon Age: Origins ( https://ojs.aaai.org/index.php/AIIDE/article/view/12400 )
 	4.2 Karttaohjelmat
-		- Eri pläänäyssessio
+		- OpenStreetMap & GraphHopper ( Lähteet:
+			https://www.openstreetmap.org/about
+			https://www.openstreetmap.org/
+			https://github.com/graphhopper/graphhopper
+		  )
 	4.3 Robotiikka
 		- A* esimerkkiimplementaatio robotissa ( https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9935869 )
 		- MAPF roboteille varastoympäristössä ( https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9921501 )
