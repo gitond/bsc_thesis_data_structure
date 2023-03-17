@@ -55,3 +55,15 @@ pPacman
 A Comparison of High-Level Approaches for Speeding Up Pathfinding
 https://ojs.aaai.org/index.php/AIIDE/article/view/12400/12259
 SturtevantDAO
+
+OpenStreetMap
+https://www.openstreetmap.org/
+OpenStreetMap
+
+OpenStreetMap - About
+https://www.openstreetmap.org/about
+OSMAbout
+
+GraphHopper
+https://github.com/graphhopper/graphhopper
+graphhopper

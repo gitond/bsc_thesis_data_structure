@@ -59,4 +59,25 @@ voinut tehostaa entisestään käyttämällä suurempia osa-alueita ylätason
 graafin rakentamiseen.
 
 \section{Karttaohjelmat}\label{karttaohjelmat}
+Polunetsintäalgoritmit ovat myös keskeisessä osassa karttaohjelmistoissa. 
+Monet karttaohjelmat tarjoavat reitinhakupalveluita, joissa generoidaan kartan  
+eri pisteiden välille reitti käyttäen polunetsintäalgoritmeja. Tämä on usein 
+helppo toteuttaa, koska karttaohjelmat säilyttävät karttadataa usein 
+polunetsintäalgoritmeille ideaalisessa muodossa. Esimerkiksi OpenDrive-
+formaatti sisältää dataa risteyksistä ja teistä, josta kootaan 
+reititysgraafi.\cite{Lanelet2} \par
+	\textcite{OpenStreetMap} on yhteisön ylläpitämä avoimen lähdekoodin 
+karttatietokanta, joka tarjoaa sivustollaan myös tietokannan karttadataa 
+käyttävää karttaohjelmaa.\cite{OSMAbout} OpenStreetMap-karttaohjelma sisältää 
+myös reitinhakumahdollisuuden. Reitinhakumahdollisuus sisältää 
+reitinhakuvaihtoehdot kävelylle, pyöräilylle ja autoilulle käyttäen joko 
+GraphHopperia, OSRM:ää tai Valhallaa.\cite{OpenStreetMap} \par
+	Nämä ovat niin sanottuja reititysmoottoreita (routing engine), jotka 
+ovat valmiita ohjelmistototeutuksia polunetsintäfunktioille.\cite{graphhopper} 
+OpenStreetMapin käyttämä \textcite{graphhopper} on Javalla kirjoitettu 
+reititysmoottori. Se käyttää sisäisessä toteutuksessaan Dijkstran algoritmia, 
+A*-algoritmia, sekä hierarkista polunetsintää käyttäen CH-menetelmää ylätason 
+graafin luomiseen ja Dijkstran algoritmiä polunetsintään. GraphHopper valitsee 
+ongelmaan sopivan polunetsintämenetelmän sen asetusten perusteella.
+
 \section{Robotiikka}\label{robotiikka}
