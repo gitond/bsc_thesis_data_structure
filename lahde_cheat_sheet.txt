@@ -67,3 +67,11 @@ OSMAbout
 GraphHopper
 https://github.com/graphhopper/graphhopper
 graphhopper
+
+Implementation of A* Shortest Path Finding Algorithm in a Transport Robot with Robust Turning Mechanism
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9935869
+transportRobotAStar
+
+Towards Industry-Inspired Use-Cases for Path Finding in Robotic Mobile Fulfillment Systems
+https://ieeexplore-ieee-org.ezproxy.utu.fi/document/9921501
+warehouse

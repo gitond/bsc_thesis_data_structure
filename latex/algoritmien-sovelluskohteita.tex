@@ -81,3 +81,70 @@ graafin luomiseen ja Dijkstran algoritmiä polunetsintään. GraphHopper valitse
 ongelmaan sopivan polunetsintämenetelmän sen asetusten perusteella.
 
 \section{Robotiikka}\label{robotiikka}
+Polunetsintää tutkitaan myös robotiikan näkökulmasta, koska käytännössä 
+kaikki robotit, jotka liikkuvaat jossakin ympäristössä, tarvitsevat 
+polunetsintäalgoritmeja tehdäkseen päätöksiä siitä, minne 
+mennä.\cite{ProcediaAStar} Liikkuvien robottien polunetsintään liittyy 
+monenlaisia haasteita. Yksi näistä on törmäyksien estäminen.\cite{ACMHindawi} 
+Robotit voivat törmätessään aiheuttaa vakavaa vahinkoa itseensä, 
+ympäristöönsä ja alueella liikkuviin ihmisiin.\cite{ProcediaAStar} Esimerkiksi 
+itseajavien autojen tapauksessa törmäykset voidaan pyrkiä estämään 
+huomioimalla muut tienkäyttäjät paikallisessa reitinsuunnittelussa. Tämä 
+ongelma kuitenkin monimutkaistuu kun tarvitsee huomioida erilaisia 
+tienkäyttäjiä. Muut tienkäyttäjät huomioiva paikallinen reitinhakualgoritmi on 
+helpompi suunnitella moottoritielle, missä voidaan odottaa liikkuvan 
+pelkästään autoja ja voidaan odottaa että kaikilla on tarpeeksi tilaa, kuin 
+kaupunkiin, jossa on lisäksi jalankulkijoita ja pyöräilijöitä, sekä 
+määrällisesti enemmän tienkäyttäjiä ja vähemmän tilaa.\cite{Lanelet2} \par
+	Törmäysten estämisen lisäksi robotiikassa tärkeässä roolissa on myös 
+graafigeneraatio. Graafigeneraatio on osa lähes jokaista polunetsintäongelmaa, 
+koska etsintäalue pitää muuttaa graafiksi, jotta polunetsintäalgoritmia voisi 
+käyttää. Graafigeneraatio kuitenkin korostuu robotiikan sovelluksissa, koska 
+toisin kun esimerkiksi videopeleissä tai kartanohjelmissa, tietokone ei 
+hallitse etsintäaluetta, eikä se välttämättä ole tietoinen esteiden 
+sijainnista alueella, tai alueen muutoksesta. Tätä varten robotiikassa 
+käytetään usein niin sanottuja dynaamisia polunetsintäalgoritmeja, jotka 
+kykenevät reagoimaan etsintäalueen muutoksiin. Esimerkkejä näistä ovat 
+A*-algoritmiin perustuva D*-algoritmi\cite{applSciLawande} ja 
+\textcite{DelaunayVoronoiAStar} kehittämä DFPA-algoritmi. \par
+	\textcite{transportRobotAStar} esittelevät artikkelissaan 
+kehittämäänsä halpaa kuljetusrobottia, joka käyttää polunetsintään 
+A*-algoritmia. Robotille syötetään ensin graafidata, jonka perusteella se 
+sitten etsii lyhimmän polun A*-algoritmilla ja seuraa sitä maaliin asti. 
+Robotti ei käytä dynaamista polunetsintää, eikä se kykene reagoimaan 
+etsintäalueella tapahtuviin muutoksiin, vaan sille syötetään alueella olevat 
+esteet graafidatan mukana. Lisäksi robotti sijoittaa itsensä graafiin 
+seuraamalla toiminta-alueella maahan kiinnitettyjä mustia viivoja. Kyseinen 
+robotti ei siis mielestäni soveltuisi tosielämän kuljetusrobotiksi, koska se 
+ei pysty reagoimaan ympäristönsä muutoksiin ja se vaatii esiasennettua 
+infrastruktuuria toimiakseen. Tutkimus keskittyi kuitenkin sensorisijoitusten 
+optimalisointiin ja käännösmekanismin ja -algoritmien tekemiseen realistisen 
+kuljetusrobotin polunetsintää enemmän. \par
+	\textcite{warehouse} vertailevat artikkelissaan 
+polunetsintäalgoritmeja varastoissa työskenteleville teollisuusroboteille. 
+Koska varastossa saattaa liikkua kerralla jopa kymmeniä tai satoja robotteja, 
+kyseessä on moniagentillinen polunetsintäongelma. Lisäksi artikkeli olettaa, 
+että robotit liikkuvat varastossa jatkuvasti lastausalueiden ja 
+varastointialueiden välillä niin, että kun jokin robotti saa sille asetetun 
+tehtävän valmiiksi, sille annetaan uusi satunnainen tehtävä. \par
+	Robotin sijaintia ei siis kyetä ennustamaan nykyisen tehtävän 
+suorittamisen jälkeen. Tämän vuoksi artikkelin polunetsintäalgoritmt ajetaan 
+uudestaan sille asetetun aikaikkunan $\omega$ mukaan. Tällöin algoritmeille 
+riittää, että löydetyt polut ovat törmäysvapaita ainoastaan seuraavan 
+aikaikkunan alkuun asti, eli korkeintaan $\omega$ ajan. Tätä kutsutaan 
+artikkelissa rullaavan horisontin törmäystenratkaisuksi (Rolling Horizon 
+Collision Resolution, RHCR) \par
+	Artikkelin vertaamat polunetsintäalgoritmit ovat ikkunoitu 
+hierarkinen yhteistoimintakykyinen A* (Windowed Hierarchical Cooperative A*, 
+WHCA*), tehostettu konfliktipohjainen haku (Enhanced Conflict Based Search, 
+ECBS) ja prioriteettipohjainen haku (Priority Based Search, PBS). WCHA* on 
+hierarkinen (luku \ref{hpa}) A*-algoritmi, joka on muokattu toimimaan 
+moniagentillisten ongelmien kanssa ikkunoidusti. ECBS on tehostettu versio 
+CBS-algoritmista, joka etsii polkua iteroituvasti niin, että aina kun 
+törmäyskohta löydetään niin polunetsintä aloitetaan alusta niin, että 
+törmäysmahdollisuus huomioidaan rajoitteena. PBS on yhdistelmä 
+moniagentilliseen ympäristöön mukautettua A*-algortimia ja CBS-algoritmia. 
+Artikkelin mittauksissa PBS oli marginaalisesti tehokkaampi kuin WHCA* ja 
+ECBS oli niin hidas, että se ei pystynyt tutkimukseen asennettujen 
+aikarajoitteiden mukaan ratkaisemaan kuin yhden kolmesta tutkitusta 
+varastosta.
