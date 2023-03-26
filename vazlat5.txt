@@ -1,0 +1,7 @@
+Tässä kappaleessa:
+ - Polunetsintäohjelman toteuttaminen (C++, erillinen suunnitelma)
+ - Ohjelman vertaaminen manuaaliseen ajoon jollain algoritmilla
+ - Testi: Suurien ongelmamäärien ajaminen koneellisesti
+ - Ota ylös testisetup: mitä algoritmeja ja algoritmiyhdistelmiä testasit (esim a*-manhattan) ja montako kertaa, kaikille oma lyhenne
+ - Tulokset: relevantit tilastolliset luvut ylös, mielenkiintoisimmista kohdista tekstimaininta
+ - Tulosmatriisi

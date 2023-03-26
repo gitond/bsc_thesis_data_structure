@@ -1,0 +1,34 @@
+Kandityötä varten tehtävä ohjelma, jonka tarkoituksena on vertailla eri polunetsintäalgoritmien toimintaa toisiinsa.
+
+Ohjelma koostuu eri moduuleista ja se toteutetaan C++-kielellä käyttämällä olio-ohjelmointia.
+
+Moduuleina toimivat muunmuassa:
+
+- main luokka josta ohjataan ohjelmaa
+
+- luokkatyyppi graafeille (joukko solmuja (piste) ja kaaria (jana), sekä algoritmeihin tarvittavia metodeja, esim. tapa saada tietoa naapuruussuhteista)
+
+- tapa visualisoida graafeja
+
+- tapa satunnaisgeneroida graafeja
+
+- moduulit vähintään seuraaville algoritmeille:
+
+ 1. BFS
+
+ 2. DFS
+
+ 3. Dijkstra
+
+ 4. A*
+
+ 5. Hierarkisen polunetsinnän moduuli
+
+, jokaisen algoritmin moduuli sisältää algoritmitoteutukset, ajokeinon, sekä tavan mitata suoritusaikaa ja muistinkulutusta
+
+- Moduulit heuristisille algoritmeille A*-algoritmia varten, sekä ylätason graafin generointiin hierarkista polunetsintää varten
+
+- tapa tulostaa mittaustuloksia ulkoiseen tiedostoon (todennäköisesti .csv tai .txt)
+
+
+Haluan saada tästä projektista 2 opintopistettä.
