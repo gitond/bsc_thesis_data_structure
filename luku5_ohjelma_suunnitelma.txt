@@ -32,3 +32,25 @@ Moduuleina toimivat muunmuassa:
 
 
 Haluan saada tästä projektista 2 opintopistettä.
+
+
+Työkalujen käyttö:
+- versionhallinta (Git ja Github)
+	- GitHub Issuesin käyttö ToDoiden trackkaamiseen
+	- GitHub Actionsin käyttö automatisoitujen testien ajamiseen joka commitilla
+
+Testattavat algoritmikombot:
+
+numero	lyhenne	polunetsintä	heuristinen	ylätasonGraafiGen
+1	BFS	BFS
+2	DFS	DFS
+3	Dij	Dijkstra
+4	A*Man	A*		Manhattan
+5	A*Euk	A*		Euklidinen
+6	A*Kulm	A*		Kulma
+7	HNelA*	A*		Euklidinen	Neliöinti16
+8	BigND	Dijkstra			Neliöinti64
+9	SmlND	Dijkstra			Neliöinti16
+10	CHDij	Dijkstra			CH
+
+
