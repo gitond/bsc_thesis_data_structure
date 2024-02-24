@@ -59,24 +59,27 @@ polunetsintäalgoritmien pseudokooditoteutukset.
 \caption{Esimerkki Dijkstran algoritmista (osa 1)}\label{DijkstrEsim}
 \begin{algorithmic}
 \Procedure{DijkstraEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
-	\State $kasiteltava \gets (nykyinen=lahtosolmu;vanhempi=NULL)$
-	\State $vieraillut \gets tyhjaLista$
-	\State $hintaLog \gets tyhjaSanakirja$
-	\State $hintaLog.lisaa(AVAIN=lahtosolmu;ARVO=0)$
-	\While{$vieraillut.pituus \not= graafidata.pituus$}
-		\State $vieraillut.lisaaLoppuun(kasiteltava)$
-		\State $minHinta \gets (solmulta=NULL;solmulle=NULL;$
-		\State $hinta=graafidata.maxHinta+1)$
-		\For{$v \in vieraillut$}
-			\For{$n \in graafidata.naapurit(v)$}
-				\If{$(nykyinen=n;vanhempi=v) \not\in vieraillut AND $\\ \quad \quad \quad \quad \quad \quad $ hintaLog[v]+graafidata.hinta(v,n) < minHinta.hinta$}
-					\State $minHinta \gets (solmulta=n;solmulle=v;$
-					\State $hinta=hintaLog[v]+graafidata.hinta(v,n))$
-				\EndIf
-			\EndFor
-		\EndFor
-		\State $hintaLog.lisaa$
-		\State $(AVAIN=minHinta.solmulle;ARVO=minHinta.hinta)$
+	\State $unvisited: \{ \} \gets (\forall V \in G : true)$
+	\State $distances: \{ \}$
+	\ForAll{$V \in G$}
+		\State $(V = S) \Rightarrow (distances[V.index] \gets 0)$
+		\State $(V \neq S) \Rightarrow (distances[V.index] \gets \infty )$
+	\EndFor
+	\State $parents: \{ \}$
+	\ForAll{$V \in G$}
+		\State $(V = S) \Rightarrow (distances[V.index] \gets -1)$
+		\State $(V \neq S) \Rightarrow (distances[V.index] \gets -2)$
+	\EndFor
+	\State $path: \{ \}$
+	\State $current \gets S$
+	\State $i \gets 0$
+	\While{$i \leq G.size0$}
+		\ForAll{$N \in current.neighbors$}
+			\If{$unvisited[N.index] = true$}
+				\State $nWeight \gets distances[current.index] + weight(current,N)$
+				\If{$distances[N.index] > nWeight$}
+					\State $distances[N.index] \gets nWeight$
+					\State $parents[N.index] \gets current$
 
 % Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle. 
 \algstore{dijkstrabreak}
@@ -87,24 +90,33 @@ polunetsintäalgoritmien pseudokooditoteutukset.
 \begin{algorithmic}
 \algrestore{dijkstrabreak}
 
-		\State $kasiteltava \gets$
-		\State $(nykyinen=minHinta.solmulle;vanhempi=minHinta.Solmulta)$
-		\If{$kasiteltava.nykyinen = maalisolmu$}
-			\State $polkuOK \gets$ \textbf{ tosi}
-			\State \textbf{break} $ä$
-		\EndIf
+				\EndIf
+			\EndIf
+		\EndFor
+		\State $unvisited[current.index] \gets false$
+		\State $minDist \gets infty$
+		\State $minDistInd \gets -1$
+		\ForAll{$U \in unvisited$}
+			\If{$unvisited[U.index] = true$}
+				\If{$distances[U.index] < minDist$}
+					\State $minDist \gets distances[U.index]$
+					\State $minDistInd \gets U.index$
+				\EndIf
+			\EndIf
+		\EndFor
+		\State $current \gets minDistInd$
+		\State $(current = d) \Rightarrow ($ \textbf{break} $)$
+		\State $i = i+1$
 	\EndWhile
-	\If{$polkuOK$}
-		\State $polku \gets tyhjaLista$
-		\While{$kasiteltava.vanhempi \not= NULL$}
-			\State $polku.lisaaAlkuun(kasiteltava.nykyinen)$
-			\State $kasiteltava \gets kasiteltava.vanhempi$
-		\EndWhile
-		\State $polku.lisaaAlkuun(lahtosolmu)$
-		\State \textbf{return} $polku$
-	\Else
-		\State \textbf{return} $NULL$
-	\EndIf
+	\State $previous \gets parents[current]$
+	\While{$previous \neq -1$}
+		\State $path.beginning \gets current$
+		\State $current \gets previous$
+		\State $previous \gets parents[current]$
+	\EndWhile
+	\State $path.beginning \gets S$
+	\State \textbf{return} $path$
+
 \EndProcedure
 \end{algorithmic}
 \end{algorithm}
