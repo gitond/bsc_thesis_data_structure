@@ -3,28 +3,41 @@ Tämä liitedokumentti sisältää tutkielmassa käsiteltyjen
 polunetsintäalgoritmien pseudokooditoteutukset.
 
 \begin{algorithm}
-\caption{Esimerkki BFS-algoritmista}\label{BFSEsim}
+\caption{Esimerkki BFS-algoritmista (osa 1)}\label{BFSEsim}
 \begin{algoritmic}
 \Procedure{BFSEsimerkki}{$graafidata,lahtosolmu,maalisolmu$}
 	\State $vieraillut \gets tyhjaLista$
 	\State $kasiteltavat \gets tyhjaLista$
-	\State $kasiteltavat.lisaaLoppuun(nykyinen=lahtosolmu;vanhempi=NULL)$
-	\While{$kasiteltavat\not=tyhjaLista$}
+	\State $vanhemmat \gets tyhjaLista$
+	\State $polku \gets tyhjaLista$
+	\State $kasiteltavat.lisaaLoppuun(lahtosolmu)$
+	\State $vanhemmat[lahtosolmu] \gets -1$
+	\While{$kasiteltavat \not= tyhjaLista$}
 		\State $kasiteltava \gets kasiteltavat.poistaEnsimmainen()$
-		\State $vieraillut.lisaaLoppuun(kasiteltava.nykyinen)$
-		\If{$kasiteltava.nykyinen = maalisolmu$}
-			\State $polku \gets tyhjaLista$
-			\While{$kasiteltava.vanhempi\not=NULL$}
-				\State $polku.lisaaAlkuun(kasiteltava.nykyinen)$
-				\State $kasiteltava \gets kasiteltava.vanhempi$
+		\State $vieraillut.lisaaLoppuun(kasiteltava)$
+		\If{$kasiteltava = maalisolmu$}
+			\While{$vanhemmat[kasiteltava] \not= -1$}
+				\State $polku.lisaaAlkuun(kasiteltava)$
+				\State $kasiteltava \gets vanhemmat[kasiteltava]$
 			\EndWhile
+
+% Algoritmin katkaisu, koska se oli liian pitkä ja latex ei suostunut renderöimään sitä yhdelle sivulle. 
+%\algstore{bfsbreak}
+%\end{algorithmic}
+%\end{algorithm}				%%%	Something here breaks
+%\begin{algorithm}				%%%
+%\caption{Esimerkki BFS-algoritmista (osa 2)}
+%\begin{algorithmic}
+%\algrestore{bfsbreak}
+
 			\State $polku.lisaaAlkuun(lahtosolmu)$
 			\State \textbf{return} $polku$
 		\Else
-			\ForAll{$n \in graafidata.naapurit(kasiteltava.nykyinen)$}
-				\State $((n \not\in vieraillut) ?  kasiteltavat.lisaaLoppuun$
-				\State $(nykyinen = n;vanhempi = kasiteltava.nykyinen) :$
-				\State \textbf{continue} $ä$
+			\ForAll{$n \in graafidata.naapurit(kasiteltava)$}
+				\If{$(n \not\in vieraillut) \land (n \not\in kasiteltavat)$}
+					\State $vanhemmat[n] \gets kasiteltava$
+					\State $kasiteltavat.lisaaLoppuun(n)$
+				\EndIf
 			\EndFor
 		\EndIf
 	\EndWhile
