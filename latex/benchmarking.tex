@@ -9,18 +9,20 @@ graafitoteutuksessa. Tämän tarkoitus on demonstroida graafien toteutuksen
 vaikutusta algoritmeihin. Testiohjelma itsessään on kehitetty tätä 
 projektia varten ja julkaistu kokonaisuudessaan avoimen lähdekoodin jakeluun.
 \cite{gt2} \par
-	Testiohjelma ajaa jokaisella ajokerralla 2000 testiä, jossa jokaista 
-varten generoidaan graafi $n$ solmulla ja $1,25n$ kaarella. Käytetyt 
-graafikoot olivat $n=64$, $n=128$ ja $n=512$. Toteutuksen testisilmukassa 
-oli kutsu, sekä BFS:lle, että Dijkstran algoritmille, sekä listatyyppisessä-, 
-että matriisityyppisessä graafissa, mutta yksittäisissä testeissä 
-kommentoitiin kaikki muu kuin testattava. Täten kun testattiin esimerkiksi 
-Dijkstran algoritmia matriisityyppisessä graafissa, niin kaikki 
-listatyyppisiin graafeihin ja BFS:ään liittyvät toimenpiteet oli kommentoitu 
-pois, jolloin ne eivät vaikuta testien tuloksiin.\cite{gt2} \par
+	Testiohjelma ratkaisee jokaisella testikerralla 2000 
+polunetsintäongelmaa, jossa jokaista varten generoidaan graafi $n$ solmulla 
+ja $1,25n$ kaarella. Ajokertoja oli yhteensä 200/kategoria, eli jokaista 
+kategoriaa kohtaan ratkaistiin yhteensä $2000*200 = 40 000$ 
+polunetsintäongelmaa. Käytetyt graafikoot olivat $n=64$, $n=128$ ja $n=512$. 
+Toteutuksen testisilmukassa oli kutsu, sekä BFS:lle, että Dijkstran 
+algoritmille, sekä listatyyppisessä-, että matriisityyppisessä graafissa, 
+mutta yksittäisissä testeissä kommentoitiin kaikki muu kuin testattava. Täten 
+kun testattiin esimerkiksi Dijkstran algoritmia matriisityyppisessä graafissa, 
+niin kaikki listatyyppisiin graafeihin ja BFS:ään liittyvät toimenpiteet oli 
+kommentoitu pois, jolloin ne eivät vaikuta testien tuloksiin.\cite{gt2} \par
 
 \begin{table}
-\centering{}\caption{Yhteenveto testeissä mitatuista ajoista\label{tab:my-table1}}
+\centering{}\caption{Yhteenveto testeissä mitatuista ajoista (sekuntia)\label{tulokset}}
 \begin{tabular}{l|c|c|}
 Graafien tyyppi ja koko (solmuja) & BFS & Dijkstran algoritmi \tabularnewline
 \hline 
@@ -50,17 +52,20 @@ Graafien tyyppi ja koko (solmuja) & BFS & Dijkstran algoritmi \tabularnewline
 \end{tabular}
 \end{table}
 
-Väliaikaista tekstiä, jotta näen miltä tulostaulukko näyttää takstin ympäröimänä:
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-\par
-
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
-
+Taulukossa \ref{tulokset} esitetään yhteenveto siitä, kuinka monta sekuntia 
+yksittäisen kategoriaan kuuluvan testin (2000 polunetsintäongelmaa) 
+keskimäärin vei. Yksittäisten testien mittaustulokset ja laskuihin käytetty 
+R-ohjelma on saatavilla testiohjelman data-kansiosta. (\cite{gt2}) \par
+	Tulkoksista näkyy, että ajoajat kasvavat kaikkialla selkeästi 
+nopeammin kuin graafikoko, paitsi listatyyppisten graafien BFS:ssä. 
+Matriisityyppisissä graafeissa Dijkstran algoritmi on vähän nopeampi kuin 
+BFS, mutta listatyyppisissä graafeissa BFS on selkeästi nopeampi kuin 
+Dijkstran algoritmi. Muissa vastaavissa tutkimuksissa, joita luin tätä 
+tutkielmaa varten Dijkstra oli nopeampi kuin BFS.\cite{mazeGameTrilogi} 
+Vaikka Dijkstran algoritmi onkin epäinformoitu hakualgoritmi\cite{arXivMAPF}, 
+se käyttää ahneuden periaatetta käsiteltävien solmujen ja kaarien 
+minimoimiseksi\cite{mazeGameTrilogi}, jonka takia sen hitaus listatyyppisissä 
+graafeissa BFS:ään verrattuna oli yllättävää. Mahdollinen selitys tälle voi 
+ehkä olla testiohjelman toteutus Dijkstran algoritmista, joka iteroi 
+tutkittavasta solmusta lähtevien kaarien läpi.\cite{gt2} Tämä saattaa olla 
+listatyyppisissä graafeissa kallis toimenpide.
