@@ -4,4 +4,8 @@ Tässä kappaleessa:
  - Testi: Suurien ongelmamäärien ajaminen koneellisesti
  - Ota ylös testisetup: mitä algoritmeja ja algoritmiyhdistelmiä testasit (esim a*-manhattan) ja montako kertaa, kaikille oma lyhenne
  - Tulokset: relevantit tilastolliset luvut ylös, mielenkiintoisimmista kohdista tekstimaininta
+	- Kasvu kaikkialla selkeästi nopeampaa kuin lineaarista, paitsi lista BFS
+	- Listatyyppisessä graafissa Dijkstra hitaampi kuin BFS.
+	- Tämä on vastoin muita tutkimustuloksia ja maalaisjärkeä
+	- Mahdollinen selitys: Kaaridatan läpi iterointi listatyyppisessä graafissa hankalampaa?
  - Tulosmatriisi

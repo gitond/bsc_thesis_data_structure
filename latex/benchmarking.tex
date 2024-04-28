@@ -20,23 +20,33 @@ listatyyppisiin graafeihin ja BFS:ään liittyvät toimenpiteet oli kommentoitu
 pois, jolloin ne eivät vaikuta testien tuloksiin.\cite{gt2} \par
 
 \begin{table}
-\centering{}\caption{Yhteenveto testituloksista\label{tab:my-table1}}
+\centering{}\caption{Yhteenveto testeissä mitatuista ajoista\label{tab:my-table1}}
 \begin{tabular}{l|c|c|}
-Graafin tyyppi ja solmujen määrä & BFS & Dijkstra \tabularnewline
+Graafien tyyppi ja koko (solmuja) & BFS & Dijkstran algoritmi \tabularnewline
 \hline 
 				Lista 64 	& 
-\begin{tabular}{@{}c@{}}	Aikakeskiarvo: 2,805 \\ Aikakeskihajonta: 0,3972	\end{tabular} & 
-\begin{tabular}{@{}c@{}}	Aikakeskiarvo: 2,975 \\ Aikakeskihajonta: 0,1565	\end{tabular} \tabularnewline
+\begin{tabular}{@{}c@{}}	Keskiarvo: 2,805 \\ Keskihajonta: 0,3972	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 2,975 \\ Keskihajonta: 0,1565	\end{tabular} \tabularnewline
 \hline
-Matriisi 64  & & \tabularnewline
+				Lista 128 	& 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 5,345 \\ Keskihajonta: 0,4766	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 6,63  \\ Keskihajonta: 0,4840	\end{tabular} \tabularnewline
+\hline
+				Lista 512 	& 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 25,67 \\ Keskihajonta: 0,4714	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 50,4  \\ Keskihajonta: 0,5931	\end{tabular} \tabularnewline
+\hline
+				Matriisi 64 	& 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 3,185 \\ Keskihajonta: 0,3893	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 2,945 \\ Keskihajonta: 0,2286	\end{tabular} \tabularnewline
 \hline 
-Lista 128  & & \tabularnewline
-\hline
-Matriisi 128  & & \tabularnewline
+				Matriisi 128 	& 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 9,49  \\ Keskihajonta: 0,5012	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 8,77  \\ Keskihajonta: 0,4219	\end{tabular} \tabularnewline
 \hline 
-Lista 512  & & \tabularnewline
-\hline
-Matriisi 512  & & \tabularnewline
+				Matriisi 512 	& 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 124,73 \\ Keskihajonta: 0,6156	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Keskiarvo: 114,315 \\ Keskihajonta: 1,214	\end{tabular} \tabularnewline
 \end{tabular}
 \end{table}
 
