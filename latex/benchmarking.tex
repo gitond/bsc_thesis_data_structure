@@ -1,1 +1,56 @@
 \chapter{Eräiden algoritmien tehokkuuden tarkastelu esimerkkiongelmassa}\label{benchmarking}
+
+Tässä tutkielmassa on verrattu kahta polunetsintäalgoritmia, Dijkstran 
+algoritmia ja BFS:ää, ajamalla niitä koneellisesti monta kertaa satunnaisesti 
+generoiduissa graafeissa ja tutkimalla ajautumisaikoja. Graafit on toteutettu
+Boost Graph Library C++ kirjaston avulla jonka kehitti \textcite{bgl} . 
+Testiohjelma ajaa algoritmit kahdessa Boost Graph Libraryn eri 
+graafitoteutuksessa. Tämän tarkoitus on demonstroida graafien toteutuksen 
+vaikutusta algoritmeihin. Testiohjelma itsessään on kehitetty tätä 
+projektia varten ja julkaistu kokonaisuudessaan avoimen lähdekoodin jakeluun.
+\cite{gt2} \par
+	Testiohjelma ajaa jokaisella ajokerralla 2000 testiä, jossa jokaista 
+varten generoidaan graafi $n$ solmulla ja $1,25n$ kaarella. Käytetyt 
+graafikoot olivat $n=64$, $n=128$ ja $n=512$. Toteutuksen testisilmukassa 
+oli kutsu, sekä BFS:lle, että Dijkstran algoritmille, sekä listatyyppisessä-, 
+että matriisityyppisessä graafissa, mutta yksittäisissä testeissä 
+kommentoitiin kaikki muu kuin testattava. Täten kun testattiin esimerkiksi 
+Dijkstran algoritmia matriisityyppisessä graafissa, niin kaikki 
+listatyyppisiin graafeihin ja BFS:ään liittyvät toimenpiteet oli kommentoitu 
+pois, jolloin ne eivät vaikuta testien tuloksiin.\cite{gt2} \par
+
+\begin{table}
+\centering{}\caption{Yhteenveto testituloksista\label{tab:my-table1}}
+\begin{tabular}{l|c|c|}
+Graafin tyyppi ja solmujen määrä & BFS & Dijkstra \tabularnewline
+\hline 
+				Lista 64 	& 
+\begin{tabular}{@{}c@{}}	Aikakeskiarvo: 2,805 \\ Aikakeskihajonta: 0,3972	\end{tabular} & 
+\begin{tabular}{@{}c@{}}	Aikakeskiarvo: 2,975 \\ Aikakeskihajonta: 0,1565	\end{tabular} \tabularnewline
+\hline
+Matriisi 64  & & \tabularnewline
+\hline 
+Lista 128  & & \tabularnewline
+\hline
+Matriisi 128  & & \tabularnewline
+\hline 
+Lista 512  & & \tabularnewline
+\hline
+Matriisi 512  & & \tabularnewline
+\end{tabular}
+\end{table}
+
+Väliaikaista tekstiä, jotta näen miltä tulostaulukko näyttää takstin ympäröimänä:
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+\par
+
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+Dipi diipa diipa doudou. Diipaa didi dou. Tyryry ryryryryry ryryry ryryry ry ryryryry turururu tururuu tu.
+
