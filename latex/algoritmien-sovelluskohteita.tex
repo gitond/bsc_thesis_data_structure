@@ -3,7 +3,7 @@
 \section{Videopelit}\label{videopelit}
 Monet nykyaikaiset polunetsintäalgoritmeihin liittyvät tutkimukset tehdään 
 videopeliteollisuuden 
-käyttöön.\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi} 
+käyttöön\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi}. 
 Tämä johtuu siitä, että videopeleissä törmätään usein tilanteisiin, jossa 
 NPC-hahmojen pitää liikkua videopelikartalla niin, että pelaaja ei suoraan 
 itse ohjaa niitä. Tällöin pelin on itse löydettävä reitti kahden pisteen 
@@ -13,17 +13,17 @@ ajaminen ei saa olla liian resurssi-intensiivistä, eli sen pitää pyrkiä
 kuluttamaan tietokoneen muistia ja suoritinaikaa mahdollisimman vähän. Jotta 
 resurssi-intensiivisyydeltä vältyttäisiin, voidaan löystää polun 
 optimaalisuuteen liittyviä vaatimuksia, jolloin polun ei tarvitse olla enää 
-lyhin mahdollinen.\cite{MathewAndMalathy} \par
+lyhin mahdollinen\cite{MathewAndMalathy}.\par
 	Esimerkiksi reaaliaikaisissa strategiapeleissä (real-time strategy, 
 RTS) pelaaja komentaa usein eri yksiköitä eri puolelle pelialuetta 
 mekitsemällä niille maalipisteitä. Näitä yksiköitä voi olla jopa satoja, 
 joille pitää löytää polut suurella etsintä-alueella huomioiden mahdollisesti 
-muut alueella liikkuvat yksiköt, sekä pelin säännöt siitä, että miten eri 
-yksiköt käytännössä voivat liikkua.\cite{pPacman}\cite{MathewAndMalathy} 
+muut alueella liikkuvat yksiköt, sekä pelin säännöt siitä miten eri 
+yksiköt käytännössä voivat liikkua\cite{pPacman}\cite{MathewAndMalathy}. 
 Nämä monimutkaiset laskutoimitukset on suoritettava pelin logiikan 
 vaatimalla nopeudella. Esimerkiksi videopeliyhtiö BioWare on asettanut 
 säännön, jonka mukaan kaikkien pelialueella liikkuvien agenttien polunetsintä 
-on kyttävä suorittamaan 1-3 ms aikana.\cite{pPacman} \par
+on kyettävä suorittamaan 1-3 ms aikana\cite{pPacman}.\par
 	\textcite{pPacman} kehittivät Pathfinding-in-Pacman-projektin, jossa 
 he sovelsivat polunetsintäalgoritmeja Pac-Manin kaltaiseen peliin. Pelissä 
 pelihahmo liikkuu labyrintissä yrittäen kerätä pisteitä, samalla kun sitä 
@@ -65,15 +65,15 @@ eri pisteiden välille reitti käyttäen polunetsintäalgoritmeja. Tämä on use
 helppo toteuttaa, koska karttaohjelmat säilyttävät karttadataa usein 
 polunetsintäalgoritmeille ideaalisessa muodossa. Esimerkiksi OpenDrive-
 formaatti sisältää dataa risteyksistä ja teistä, josta kootaan 
-reititysgraafi.\cite{Lanelet2} \par
+reititysgraafi\cite{Lanelet2}. \par
 	\textcite{OpenStreetMap} on yhteisön ylläpitämä avoimen lähdekoodin 
 karttatietokanta, joka tarjoaa sivustollaan myös tietokannan karttadataa 
-käyttävää karttaohjelmaa.\cite{OSMAbout} OpenStreetMap-karttaohjelma sisältää 
+käyttävää karttaohjelmaa\cite{OSMAbout}. OpenStreetMap-karttaohjelma sisältää 
 myös reitinhakumahdollisuuden. Reitinhakumahdollisuus sisältää 
 reitinhakuvaihtoehdot kävelylle, pyöräilylle ja autoilulle käyttäen joko 
-GraphHopperia, OSRM:ää tai Valhallaa.\cite{OpenStreetMap} \par
+GraphHopperia, OSRM:ää tai Valhallaa\cite{OpenStreetMap}. \par
 	Nämä ovat niin sanottuja reititysmoottoreita (routing engine), jotka 
-ovat valmiita ohjelmistototeutuksia polunetsintäfunktioille.\cite{graphhopper} 
+ovat valmiita ohjelmistototeutuksia polunetsintäfunktioille\cite{graphhopper}. 
 OpenStreetMapin käyttämä \textcite{graphhopper} on Javalla kirjoitettu 
 reititysmoottori. Se käyttää sisäisessä toteutuksessaan Dijkstran algoritmia, 
 A*-algoritmia, sekä hierarkista polunetsintää käyttäen CH-menetelmää ylätason 
@@ -84,10 +84,10 @@ ongelmaan sopivan polunetsintämenetelmän sen asetusten perusteella.
 Polunetsintää tutkitaan myös robotiikan näkökulmasta, koska käytännössä 
 kaikki robotit, jotka liikkuvaat jossakin ympäristössä, tarvitsevat 
 polunetsintäalgoritmeja tehdäkseen päätöksiä siitä, minne 
-mennä.\cite{ProcediaAStar} Liikkuvien robottien polunetsintään liittyy 
-monenlaisia haasteita. Yksi näistä on törmäyksien estäminen.\cite{ACMHindawi} 
+mennä\cite{ProcediaAStar}. Liikkuvien robottien polunetsintään liittyy 
+monenlaisia haasteita. Yksi näistä on törmäyksien estäminen\cite{ACMHindawi}. 
 Robotit voivat törmätessään aiheuttaa vakavaa vahinkoa itseensä, 
-ympäristöönsä ja alueella liikkuviin ihmisiin.\cite{ProcediaAStar} Esimerkiksi 
+ympäristöönsä ja alueella liikkuviin ihmisiin\cite{ProcediaAStar}. Esimerkiksi 
 itseajavien autojen tapauksessa törmäykset voidaan pyrkiä estämään 
 huomioimalla muut tienkäyttäjät paikallisessa reitinsuunnittelussa. Tämä 
 ongelma kuitenkin monimutkaistuu kun tarvitsee huomioida erilaisia 
@@ -95,14 +95,14 @@ tienkäyttäjiä. Muut tienkäyttäjät huomioiva paikallinen reitinhakualgoritm
 helpompi suunnitella moottoritielle, missä voidaan odottaa liikkuvan 
 pelkästään autoja ja voidaan odottaa että kaikilla on tarpeeksi tilaa, kuin 
 kaupunkiin, jossa on lisäksi jalankulkijoita ja pyöräilijöitä, sekä 
-määrällisesti enemmän tienkäyttäjiä ja vähemmän tilaa.\cite{Lanelet2} \par
+määrällisesti enemmän tienkäyttäjiä ja vähemmän tilaa\cite{Lanelet2}.\par
 	Törmäysten estämisen lisäksi robotiikassa tärkeässä roolissa on myös 
 graafigeneraatio. Graafigeneraatio on osa lähes jokaista polunetsintäongelmaa, 
 koska etsintäalue pitää muuttaa graafiksi, jotta polunetsintäalgoritmia voisi 
 käyttää. Graafigeneraatio kuitenkin korostuu robotiikan sovelluksissa, koska 
-toisin kun esimerkiksi videopeleissä tai kartanohjelmissa, tietokone ei 
+toisin kun esimerkiksi videopeleissä tai karttaohjelmissa, tietokone ei 
 hallitse etsintäaluetta, eikä se välttämättä ole tietoinen esteiden 
-sijainnista alueella, tai alueen muutoksesta. Tätä varten robotiikassa 
+sijainnista alueella, tai alueen muutoksista. Tätä varten robotiikassa 
 käytetään usein niin sanottuja dynaamisia polunetsintäalgoritmeja, jotka 
 kykenevät reagoimaan etsintäalueen muutoksiin. Esimerkkejä näistä ovat 
 A*-algoritmiin perustuva D*-algoritmi\cite{applSciLawande} ja 
@@ -130,10 +130,10 @@ tehtävän valmiiksi, sille annetaan uusi satunnainen tehtävä. \par
 	Robotin sijaintia ei siis kyetä ennustamaan nykyisen tehtävän 
 suorittamisen jälkeen. Tämän vuoksi artikkelin polunetsintäalgoritmt ajetaan 
 uudestaan sille asetetun aikaikkunan $\omega$ mukaan. Tällöin algoritmeille 
-riittää, että löydetyt polut ovat törmäysvapaita ainoastaan seuraavan 
-aikaikkunan alkuun asti, eli korkeintaan $\omega$ ajan. Tätä kutsutaan 
-artikkelissa rullaavan horisontin törmäystenratkaisuksi (Rolling Horizon 
-Collision Resolution, RHCR) \par
+riittää, että löydetyt polut ovat törmäysvapaita seuraavan aikaikkunan alkuun 
+asti, eli vähintään $\omega$ ajan. Tätä kutsutaan artikkelissa rullaavan 
+horisontin törmäystenratkaisuksi (Rolling Horizon Collision Resolution, 
+RHCR)\par
 	Artikkelin vertaamat polunetsintäalgoritmit ovat ikkunoitu 
 hierarkinen yhteistoimintakykyinen A* (Windowed Hierarchical Cooperative A*, 
 WHCA*), tehostettu konfliktipohjainen haku (Enhanced Conflict Based Search, 
