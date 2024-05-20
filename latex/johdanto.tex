@@ -3,11 +3,11 @@
 \section{Tutkielman tarkoitus}\label{tTarkoitus}
 Polunetsintäalgoritmeja tarvitaan aina kun halutaan koneellisesti etsiä 
 polku kahden pisteen väliin. Ne ovat paljon tutkittu aihepiiri matematiikan, 
-tietotekniikan, algoritmiikan ja tekoälytutkimuksen alalla. Tämä tutkielman 
+tietotekniikan, algoritmiikan ja tekoälytutkimuksen alalla. Tämän tutkielman 
 tarkoitus on syventyä aihepiiriin ja koota sen perusteet yhteen niin, että sen 
-lukemisen jälkeen lukijalla on perusymmärrys aihepiiristä. Toisin sanoen 
-tutkielman tarkoitus on esitellä lukijalle erilaisia polunetsintäalgoritmeja, 
-sekä verrata niiden toimintaa jossakin esimerkkiympäristössä.
+lukemisen jälkeen lukijalla on perusymmärrys aihepiiristä. Tutkielma 
+tarkastelee erilaisia polunetsintäalgoritmeja, sekä vertailee niiden 
+toimintaa ja tehokkuutta esimerkkien avulla.
 
 \section{Tutkimuskysymykset}\label{tutkimuskysymykset}
 Tutkielmassa pyritään vastaamaan seuraaviin kysymyksiin:
@@ -21,9 +21,9 @@ Tutkielmassa pyritään vastaamaan seuraaviin kysymyksiin:
 Tietoa tämän tutkielman tekoon on haettu IEEE:n Xplore Digital 
 Center-tietokannasta, Web of Science-tietokannasta, sekä Google 
 Scholar-hakupalvelusta. Hakutuloksia rajattiin julkaisuajan mukaan niin, 
-että suurin osa hakutuloksista on julkaistu vuona 2018 tai sen jälkeen. 
+että suurin osa hakutuloksista on julkaistu vuonna 2018 tai sen jälkeen. 
 Myös aihepiirirajausta on käytetty. Hakusanoissa on käytetty osuvempien 
-tulosten löytämiseksi Boolen operaattoreita, sekä sanakatkaisua. Alla on 
+tulosten löytämiseksi Boolen operaattoreita sekä sanakatkaisua. Alla on 
 muutama esimerkki käytetyistä hakusanoista:
 \begin{center}
 \texttt{
@@ -34,16 +34,15 @@ muutama esimerkki käytetyistä hakusanoista:
 \end{center}
 
 \section{Tutkielman rakenne}\label{tRakenne}
-Tutkielman luku \ref{Taustoitus} taustoittaa seuraavia lukuja. Tarkoitus on, 
-että luvun \ref{Taustoitus} lukemisen jälkeen lukijalle tulisivat tutuksi 
-polunetsintään liittyvät peruskäsitteet ja tausta-aiheet, jotta seuraavien 
-lukujen ymmärtäminen helpottuisi. Luvussa \ref{joitainP} käydään läpi 
-muutaman tunnetun polunetsinnän toiminta ja täten pyritään vastaamaan 
-tutkimuskysymykseen \ref{tKysymys1} Luvussa 
-\ref{algoritmienSovelluskohteita} käydään läpi joitakin 
+Tutkielman luku \ref{Taustoitus} taustoittaa myöhempiä lukuja. Luku, 
+\ref{Taustoitus} esittelee polunetsintään liittyvät peruskäsitteet ja 
+tausta-aiheet, jotta seuraavien lukujen ymmärtäminen helpottuisi. 
+Luvussa \ref{joitainP} käydään läpi muutaman tunnetun polunetsintäalgoritmin 
+toiminta ja täten pyritään vastaamaan tutkimuskysymykseen \ref{tKysymys1} 
+Luvussa \ref{algoritmienSovelluskohteita} käydään läpi joitakin 
 polunetsintäalgoritmien yleisiä käyttökohteita ja pyritään vastaamaan 
 tutkimuskysymykseen \ref{tKysymys2} Luvussa \ref{benchmarking} taas mitataan 
 useiden eri polunetsintäalgoritmien tehokkuus eräässä esimerkkiongelmassa ja 
 vertaillaan niitä tämän avulla toisiinsa. Lopussa olevassa 
 yhteenvetokappaleessa \ref{yhteenveto} tulokset kootaan vielä yhteen ja 
-esitetään helpommin luettavassa muodossa.
+kerrataan tärkeimmät havainnot lyhyesti.
