@@ -2,33 +2,33 @@
 
 \section{Videopelit}\label{videopelit}
 Monet nykyaikaiset polunetsintäalgoritmeihin liittyvät tutkimukset tehdään 
-videopeliteollisuuden 
-käyttöön\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi}. 
+vi\-de\-o\-pe\-li\-te\-ol\-li\-suu\-den 
+käyttöön~\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi}. 
 Tämä johtuu siitä, että videopeleissä törmätään usein tilanteisiin, jossa 
 NPC-hahmojen pitää liikkua videopelikartalla niin, että pelaaja ei suoraan 
 itse ohjaa niitä. Tällöin pelin on itse löydettävä reitti kahden pisteen 
 välille. Kun polunetsintäalgoritmeja toteutetaan videopeleissä, joudutaan 
 kiinnittämään huomiota muutamiin erityisvaatimuksiin. Polunetsintäalgoritmien 
 ajaminen ei saa olla liian resurssi-intensiivistä, eli sen pitää pyrkiä 
-kuluttamaan tietokoneen muistia ja suoritinaikaa mahdollisimman vähän. Jotta 
-resurssi-intensiivisyydeltä vältyttäisiin, voidaan löystää polun 
+kuluttamaan tietoko\-neen muistia ja suoritinaikaa mahdollisimman vähän. Jotta 
+resurssi-intensiivisyydel\-tä vältyttäisiin, voidaan löysätä polun 
 optimaalisuuteen liittyviä vaatimuksia, jolloin polun ei tarvitse olla enää 
-lyhin mahdollinen\cite{MathewAndMalathy}.\par
+lyhin mahdollinen~\cite{MathewAndMalathy}.\par
 	Esimerkiksi reaaliaikaisissa strategiapeleissä (real-time strategy, 
 RTS) pelaaja komentaa usein eri yksiköitä eri puolelle pelialuetta 
 mekitsemällä niille maalipisteitä. Näitä yksiköitä voi olla jopa satoja, 
-joille pitää löytää polut suurella etsintä-alueella huomioiden mahdollisesti 
+ja niille pitää löytää polut suurella etsintä-alueella huomioiden mahdollisesti 
 muut alueella liikkuvat yksiköt, sekä pelin säännöt siitä miten eri 
-yksiköt käytännössä voivat liikkua\cite{pPacman}\cite{MathewAndMalathy}. 
+yksiköt käytännössä voivat liikkua~\cite{pPacman}\cite{MathewAndMalathy}. 
 Nämä monimutkaiset laskutoimitukset on suoritettava pelin logiikan 
 vaatimalla nopeudella. Esimerkiksi videopeliyhtiö BioWare on asettanut 
 säännön, jonka mukaan kaikkien pelialueella liikkuvien agenttien polunetsintä 
-on kyettävä suorittamaan 1-3 ms aikana\cite{pPacman}.\par
+on kyettävä suorittamaan 1-3 ms aikana~\cite{pPacman}.\par
 	\textcite{pPacman} kehittivät Pathfinding-in-Pacman-projektin, jossa 
 he sovelsivat polunetsintäalgoritmeja Pac-Manin kaltaiseen peliin. Pelissä 
 pelihahmo liikkuu labyrintissä yrittäen kerätä pisteitä, samalla kun sitä 
 jahtaavat vihollishahmoina toimivat haamut. Pelaaja voittaa kerättyään kaikki 
-pisteet, ja häviää kun haamut koskevat häntä. Peli sisältää toteutukset BFS- 
+pisteet ja häviää kun haamut koskevat häntä. Peli sisältää toteutukset BFS- 
 ja A*-algoritmeista, sekä pelin tarkoituksiin muokatusta A*-algoritmistä, 
 jota projektin raportti kutsuu Context Dependent Subgoaling A*-algoritmiksi
 (kontekstiriippuvaisesti osatavoitteistava A*, CDSA*) ja ohjelmakoodi kutsuu 
@@ -42,20 +42,20 @@ CSDA*-algoritmit käyttävät heuristiikkana Manhattan-etäisyyttä. \par
 	\textcite{SturtevantDAO} vertaavat tutkimuksessaan erilaisia 
 suurelle etsintäalueelle soveltuvia polunetsintätekniikoita Dragon Age: 
 Origins-videopelissä (DAO) käytettyyn polunetsintään. Nämä 
-polunetsintätekniikat ovat abstraktiahierarkien käyttö, parempien 
-heurististen funktioiden käyttö, sekä sopimushierarkioiden (Contrarction 
-Hierarchy, CH) käyttö. Abstraktihierarkia ja CH ovat hierarkisessa 
-polunetsinnässä (luku \ref{hpa}) käytettäviä tapoja muodostaa ylätason 
-graafi. Abstraktihierarkia muodostaa ylätason graafin niin, että 
+polunetsintätekniikat ovat abstraktiohierarkioiden käyttö, parempien 
+heurististen funktioiden käyttö, ja sopimushierarkioiden (Contrarction 
+Hierarchy, CH) käyttö. Abstraktiohierarkia ja CH ovat hierarkisessa 
+po\-lun\-etsinnässä (luku \ref{hpa}) käytettäviä tapoja muodostaa ylätason 
+graafi. Abstraktiohie\-rar\-kia muodostaa ylätason graafin niin, että 
 varsinaisen etsintäalueen eri osa-alueet ovat ylätason graafin solmuja, kun 
 taas CH muodostaa ylätason graafin laskemalla alkuperäisen graafin jokaiselle 
 solmulle tärkeystason (importance level) ja poistamalla vähemmän tärkeät 
 solmut graafista. \textcite{SturtevantDAO} osoittivat, että hierarkinen 
 polunetsintä joko abstraktiohierarkiaa tai CH:ta käyttäen soveltui parhaiten 
 polunetsintään DAO:n kaltaisissa videopeleissä, koska näillä menetelmillä 
-käytettiin vähiten suoritinta ja muistia. DAO käyttää abstraktiohierarkiaa, 
+käytettiin vähiten suoritinta ja muistia. DAO käyttää abstraktiohie\-rar\-kiaa, 
 mutta \textcite{SturtevantDAO} mainitsevat, että pelin polunetsintää olisi 
-voinut tehostaa entisestään käyttämällä suurempia osa-alueita ylätason 
+voi\-nut tehostaa entisestään käyttämällä suurempia osa-alueita ylätason 
 graafin rakentamiseen.
 
 \section{Karttaohjelmat}\label{karttaohjelmat}
@@ -65,39 +65,40 @@ eri pisteiden välille reitti käyttäen polunetsintäalgoritmeja. Tämä on use
 helppo toteuttaa, koska karttaohjelmat säilyttävät karttadataa usein 
 polunetsintäalgoritmeille ideaalisessa muodossa. Esimerkiksi OpenDrive-
 formaatti sisältää dataa risteyksistä ja teistä, josta kootaan 
-reititysgraafi\cite{Lanelet2}. \par
+reititysgraafi~\cite{Lanelet2}. \par
 	\textcite{OpenStreetMap} on yhteisön ylläpitämä avoimen lähdekoodin 
 karttatietokanta, joka tarjoaa sivustollaan myös tietokannan karttadataa 
-käyttävää karttaohjelmaa\cite{OSMAbout}. OpenStreetMap-karttaohjelma sisältää 
-myös reitinhakumahdollisuuden. Reitinhakumahdollisuus sisältää 
+käyttävää karttaohjelmaa~\cite{OSMAbout}. OpenStreetMap-karttaohjelma sisältää 
+myös reitinhakumahdolli\-suu\-den. Reitinhakumahdollisuus sisältää 
 reitinhakuvaihtoehdot kävelylle, pyöräilylle ja autoilulle käyttäen joko 
-GraphHopperia, OSRM:ää tai Valhallaa\cite{OpenStreetMap}. \par
+GraphHopperia, OSRM:ää tai Valhallaa~\cite{OpenStreetMap}. \par
 	Nämä ovat niin sanottuja reititysmoottoreita (routing engine), jotka 
-ovat valmiita ohjelmistototeutuksia polunetsintäfunktioille\cite{graphhopper}. 
-OpenStreetMapin käyttämä \textcite{graphhopper} on Javalla kirjoitettu 
-reititysmoottori. Se käyttää sisäisessä toteutuksessaan Dijkstran algoritmia, 
-A*-algoritmia, sekä hierarkista polunetsintää käyttäen CH-menetelmää ylätason 
-graafin luomiseen ja Dijkstran algoritmiä polunetsintään. GraphHopper valitsee 
+ovat val\-mii\-ta ohjelmistototeutuksia 
+polunetsintäfunktioille~\cite{graphhopper}. OpenStreetMapin käyttämä 
+\textcite{graphhopper} on Javalla kirjoitettu reititysmoottori. Se käyttää 
+si\-säi\-ses\-sä toteutuksessaan Dijkstran algoritmia, A*-algoritmia, sekä 
+hierarkista po\-lun\-etsintää käyttäen CH-menetelmää ylätason graafin 
+luomiseen ja Dijkstran algoritmia polunetsintään. GraphHopper valitsee 
 ongelmaan sopivan polunetsintämenetelmän sen asetusten perusteella.
 
 \section{Robotiikka}\label{robotiikka}
 Polunetsintää tutkitaan myös robotiikan näkökulmasta, koska käytännössä 
-kaikki robotit, jotka liikkuvaat jossakin ympäristössä, tarvitsevat 
+kaikki robotit, jotka liikkuvat jossakin ympäristössä, tarvitsevat 
 polunetsintäalgoritmeja tehdäkseen päätöksiä siitä, minne 
-mennä\cite{ProcediaAStar}. Liikkuvien robottien polunetsintään liittyy 
-monenlaisia haasteita. Yksi näistä on törmäyksien estäminen\cite{ACMHindawi}. 
+mennä~\cite{ProcediaAStar}. Liikkuvien robottien polunetsintään liittyy 
+monenlaisia haasteita. Yksi näistä on törmäyksien estäminen~\cite{ACMHindawi}. 
 Robotit voivat törmätessään aiheuttaa vakavaa vahinkoa itseensä, 
-ympäristöönsä ja alueella liikkuviin ihmisiin\cite{ProcediaAStar}. Esimerkiksi 
+ympäristöönsä ja alueella liikkuviin ihmisiin~\cite{ProcediaAStar}. Esimerkiksi 
 itseajavien autojen tapauksessa törmäykset voidaan pyrkiä estämään 
-huomioimalla muut tienkäyttäjät paikallisessa reitinsuunnittelussa. Tämä 
-ongelma kuitenkin monimutkaistuu kun tarvitsee huomioida erilaisia 
+huomioimalla muut tienkäyttäjät paikallisessa reitin\-suun\-nittelussa. Tämä 
+ongelma kuitenkin monimutkaistuu kun pitää huomioida erilaisia 
 tienkäyttäjiä. Muut tienkäyttäjät huomioiva paikallinen reitinhakualgoritmi on 
 helpompi suunnitella moottoritielle, missä voidaan odottaa liikkuvan 
 pelkästään autoja ja voidaan odottaa että kaikilla on tarpeeksi tilaa, kuin 
 kaupunkiin, jossa on lisäksi jalankulkijoita ja pyöräilijöitä, sekä 
-määrällisesti enemmän tienkäyttäjiä ja vähemmän tilaa\cite{Lanelet2}.\par
+määrällisesti enemmän tienkäyttäjiä ja vähemmän tilaa~\cite{Lanelet2}.\par
 	Törmäysten estämisen lisäksi robotiikassa tärkeässä roolissa on myös 
-graafigeneraatio. Graafigeneraatio on osa lähes jokaista polunetsintäongelmaa, 
+graafigene\-raa\-tio. Graafigeneraatio on osa lähes jokaista polunetsintäongelmaa, 
 koska etsintäalue pitää muuttaa graafiksi, jotta polunetsintäalgoritmia voisi 
 käyttää. Graafigeneraatio kuitenkin korostuu robotiikan sovelluksissa, koska 
 toisin kun esimerkiksi videopeleissä tai karttaohjelmissa, tietokone ei 
@@ -105,20 +106,20 @@ hallitse etsintäaluetta, eikä se välttämättä ole tietoinen esteiden
 sijainnista alueella, tai alueen muutoksista. Tätä varten robotiikassa 
 käytetään usein niin sanottuja dynaamisia polunetsintäalgoritmeja, jotka 
 kykenevät reagoimaan etsintäalueen muutoksiin. Esimerkkejä näistä ovat 
-A*-algoritmiin perustuva D*-algoritmi\cite{applSciLawande} ja 
+A*-algoritmiin perustuva D*-algoritmi~\cite{applSciLawande} ja 
 \textcite{DelaunayVoronoiAStar} kehittämä DFPA-algoritmi. \par
 	\textcite{transportRobotAStar} esittelevät artikkelissaan 
 kehittämäänsä halpaa kuljetusrobottia, joka käyttää polunetsintään 
 A*-algoritmia. Robotille syötetään ensin graafidata, jonka perusteella se 
 sitten etsii lyhimmän polun A*-algoritmilla ja seuraa sitä maaliin asti. 
 Robotti ei käytä dynaamista polunetsintää, eikä se kykene reagoimaan 
-etsintäalueella tapahtuviin muutoksiin, vaan sille syötetään alueella olevat 
-esteet graafidatan mukana. Lisäksi robotti sijoittaa itsensä graafiin 
-seuraamalla toiminta-alueella maahan kiinnitettyjä mustia viivoja. Kyseinen 
-robotti ei siis mielestäni soveltuisi tosielämän kuljetusrobotiksi, koska se 
-ei pysty reagoimaan ympäristönsä muutoksiin ja se vaatii esiasennettua 
+etsintäalueella tapahtuviin muutoksiin, vaan sille syötetään alueella 
+o\-le\-vat esteet graafidatan mukana. Lisäksi robotti sijoittaa itsensä 
+graafiin seuraamalla toiminta-alueella maahan kiinnitettyjä mustia viivoja. 
+Kyseinen robotti ei siis soveltuisi tosielämän kuljetusrobotiksi, koska se 
+ei pysty reagoimaan ympäristönsä muutoksiin ja koska se vaatii esiasennettua 
 infrastruktuuria toimiakseen. Tutkimus keskittyi kuitenkin sensorisijoitusten 
-optimalisointiin ja käännösmekanismin ja -algoritmien tekemiseen realistisen 
+optimalisointiin ja käännösmekanismin ja \\ -algoritmien tekemiseen realistisen 
 kuljetusrobotin polunetsintää enemmän. \par
 	\textcite{warehouse} vertailevat artikkelissaan 
 polunetsintäalgoritmeja varastoissa työskenteleville teollisuusroboteille. 
@@ -137,14 +138,14 @@ RHCR)\par
 	Artikkelin vertaamat polunetsintäalgoritmit ovat ikkunoitu 
 hierarkinen yhteistoimintakykyinen A* (Windowed Hierarchical Cooperative A*, 
 WHCA*), tehostettu konfliktipohjainen haku (Enhanced Conflict Based Search, 
-ECBS) ja prioriteettipohjainen haku (Priority Based Search, PBS). WCHA* on 
+ECBS) ja prioriteetti\-poh\-jainen haku (Priority Based Search, PBS). WCHA* on 
 hierarkinen (luku \ref{hpa}) A*-algoritmi, joka on muokattu toimimaan 
-moniagentillisten ongelmien kanssa ikkunoidusti. ECBS on tehostettu versio 
-CBS-algoritmista, joka etsii polkua iteroituvasti niin, että aina kun 
+moniagentillisten ongelmien kanssa ik\-ku\-noi\-dus\-ti. ECBS on tehostettu 
+versio CBS-algoritmista, joka etsii polkua iteroituvasti niin, että aina kun 
 törmäyskohta löydetään niin polunetsintä aloitetaan alusta niin, että 
 törmäysmahdollisuus huomioidaan rajoitteena. PBS on yhdistelmä 
 moniagentilliseen ympäristöön mukautettua A*-algortimia ja CBS-algoritmia. 
 Artikkelin mittauksissa PBS oli marginaalisesti tehokkaampi kuin WHCA* ja 
-ECBS oli niin hidas, että se ei pystynyt tutkimukseen asennettujen 
+ECBS oli \\ niin hidas, että se ei pystynyt tutkimukseen asennettujen 
 aikarajoitteiden mukaan ratkaisemaan kuin yhden kolmesta tutkitusta 
 varastosta.

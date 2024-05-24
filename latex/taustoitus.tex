@@ -10,7 +10,7 @@ polut~\cite{MathewAndMalathy}.\par
 	Jotta polunetsintäongelmia voitaisiin ratkaista koneellisesti, 
 täytyy ne ensin muuttaa matemaattiseen esitysmuotoon. Polunetsintäongelmat 
 voidaankin jakaa kahteen osaongelmaan: graafigeneraatioon ja 
-polunetsintäalgoritmin käyttöön. Graafigeneraatiota tarvitaan, koska polun 
+polunetsintäalgoritmin käyttöön. Graafigene\-raatiota tarvitaan, koska polun 
 löytämiseen käytetyt algoritmit toimivat tyypillisesti graafeissa. Siinä 
 muutetaan polunetsintäongelman alueena toimiva maasto- tai kartta-alue 
 graafimuotoiseksi rakentamalla siitä esimerkiksi luurankomalli 
@@ -37,13 +37,13 @@ niiden toimintaperiaatteen mukaan epäinformoituihin (uninformed),
 informoituihin (informed) ja metaheuristisiin (metaheuristic) 
 hakualgoritmeihin (search algorithms)~\cite{applSciLawande}.\par
 	Epäinformoidut hakualgoritmit ovat yksinkertaisia algoritmeja, jotka 
-eivät ole tietoisia ongelma-alueensa yksityiskohdista. Näin ollen 
+eivät ole tie\-toisia ongelma-alueensa yksityiskohdista. Näin ollen 
 epäinformoidut hakualgoritmit perustuvat toimintamalliin, jossa kuljetaan 
 graafissa solmukohdasta toiseen kaaria pitkin niin kauan kunnes ollaan 
-löydetty polku lähtösolmusta maalisolmuun. Tätä toimintamallia sanotaan 
-joskus myös sokeaksi hauksi (blind search)~\cite{applSciLawande}.\par
+löydetty polku lähtösolmusta maalisolmuun. Tätä toimintamallia sanotaan joskus 
+myös sokeaksi hauksi (blind search)~\cite{applSciLawande}.\par
 	Informoidut hakualgoritmit sen sijaan käyttävät ongelma-alueesta 
-laskettuja tietoja hyväksi nopeuttaakseen ajoaikaa. Tyypillisesti tämä 
+laskettuja tie\-toja hyväksi nopeuttaakseen ajoaikaa. Tyypillisesti tämä 
 tehdään laskemalla seuraavaksi läpikäytävien solmukohtien etäisyys 
 maalisolmusta käyttämällä niin kutsuttua heuristista funktiota. Näin ollen 
 jokaiselle graafissa olevalle solmukohdalle $n$ saadaan laskettua sen 
@@ -55,7 +55,7 @@ tutkittavia solmuja on sokeaan hakuun verrattuna yhteensä vähemmän ja
 algoritmi on nopeampi ajaa~\cite{applSciLawande}.\par
 	A* (luetaan A-tähti tai A-star) on yksi esimerkki informoidusta 
 hakualgoritmista. A* on yksi suosituimmista polunetsintäalgoritmeista 
-käytännön sovelluskohteissa. Tämä johtuu siitä, että A* on yksinkertainen 
+käytännön sovelluskoh\-teissa. Tämä johtuu siitä, että A* on yksinkertainen 
 toteuttaa ja se palauttaa aina optimaalisen polun, mikäli käytetään 
 sopivaa heuristista funktiota~\cite{MathewAndMalathy}. Sen pohjalta on 
 myös kehitetty muita polunetsintäalgoritmeja~\cite{applSciLawande}.\par
@@ -66,13 +66,13 @@ läpi.
 
 \section{Esimerkkejä sovelluskohteista}\label{eSuovelluskohteista}
 Polunetsintäongelmia joudutaan ratkomaan muun muassa videopeleissä, 
-karttaohjelmissa, erilaisissa simulaatioissa ja 
+karttaoh\-jelmissa, erilaisissa simulaatioissa ja 
 robotiikassa~\cite{ACMHindawi}, sekä esimerkiksi logistiikan alan 
 automaatiossa ja robotisoitujen autojen kehityksessä~\cite{arXivMAPF}. 
-Merkittävän suuri osa polunetsintäongelmiin liittyvistä tutkimuksista tehdään 
+Merkittävän suuri osa po\-lun\-etsintäongelmiin liittyvistä tutkimuksista tehdään 
 nimenomaan 
-videopelien~\cite{MathewAndMalathy}~\cite{ACMHindawi}~\cite{mazeGameTrilogi}
-ja robotiikan~\cite{ACMHindawi}~\cite{DelaunayVoronoiAStar} näkökulmasta.\par
+videopelien~\cite{MathewAndMalathy}\cite{ACMHindawi}\cite{mazeGameTrilogi}
+ja robotiikan~\cite{ACMHindawi}\cite{DelaunayVoronoiAStar} näkökulmasta.\par
 	Polunetsintäongelmia esiintyy videopeleissä, koska niissä on usein 
 tarve simuloida ei-pelattavien hahmojen (non-playable character, NPC) 
 liikkeitä niin, että niille on määritelty lähtö- ja maalipisteet, sekä 
@@ -110,12 +110,12 @@ voitaisiin kehittää karttapalveluita, joita ne voisivat soveltaa.
 Polunetsinnän soveltaminen robotiikassa on hyvin monipuolista, koska 
 ongelmat ovat keskenään erilaisia ja lähestymistavatkin voivat olla 
 erilaisia. Esimerkiksi jos polunetsintää käytetään tilanteessa, jossa 
-tehtaassa liikkuu kymmeniä teollisuusrobotteja eri kohteisiin, niin 
+tehtaassa liikkuu kymmeniä teollisuusrobotteja eri koh\-teisiin, niin 
 polunetsintäalgoritmeja voidaan ajaa jokaisessa robotissa erikseen, tai 
 keskustietokone voi välittää jokaiselle robotille polun, jotka muodostavat 
 ratkaisun moniagentilliseen polunetsintäongelmaan. 
 \textcite{DelaunayVoronoiAStar} esittävät artikkelissaan 
 Delaunay-kolmiomittaukseen perustuvaa graafigeneraatiota ja tehostetun 
 A*-algoritmin ajoa liikkuvassa robotissa. Polunetsintäalgoritmien 
-soveltamista robotiikan sovelluksiin käydään tarkemmin läpi tutkielman 
+soveltamista robotii\-kan sovelluksiin käydään tarkemmin läpi tutkielman 
 luvussa \ref{robotiikka}.

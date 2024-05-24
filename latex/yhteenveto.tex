@@ -13,12 +13,13 @@ algoritmit eivät ole tietoisia etsimänsä alueen yksityiskohdista, kun taas
 informoidut algoritmit voivat käyttää etsintäalueesta laskemaansa dataa 
 nopeuttamaan algoritmia. Metaheuristiset algoritmit taas käyttävät muita 
 keinoja kuin solmukohtien tutkimista tai heuristisia funktioita polkujen 
-etsimiseen.\cite{applSciLawande} Nämä on rajattu tästä tutkielmasta pois. \par
+etsimiseen.~\cite{applSciLawande} Nämä algoritmit on rajattu tästä 
+tutkielmasta pois. \par
 	Näiden lisäksi on olemassa myös hierarkisia ja dynaamisia 
 polunetsintäalgoritmeja. Hierarkiset polunetsintäalgoritmit luovat 
-etsintäalueesta yksinkertaistetun abstraktion, jossa on helpompi ratkaista 
-ongelma. Varsinaisen ongelman ratkaisu johdetaan sitten abstraktion 
-ratkaisusta.\cite{rda} Hierarkisesta polunetsinnästä puhutaan tarkemmin 
+etsintäalueesta yksinkertaistetun abs\-traktion, jossa on helpompi ratkaista 
+ongelma. Varsinaisen ongelman ratkaisu joh\-detaan sitten abstraktion 
+ratkaisusta.~\cite{rda} Hierarkisesta polunetsinnästä puhutaan tarkemmin 
 luvussa \ref{hpa}. Dynaamiset algoritmit taas kykenevät reagoimaan 
 etsintäalueessa tapahtuviin muutoksiin reaaliajassa. Näistä puhutaan 
 pikaisesti luvussa \ref{robotiikka}. \par
@@ -27,25 +28,25 @@ polunetsintäalgoritmeja voidaan käyttää käytännön sovelluksiin. Tähän
 kysymykseen vastataan kappaleessa \ref{algoritmienSovelluskohteita}, jossa 
 syvennytään tarkemmin kolmeen sovelluskohteeseen: videopeleihin, 
 karttaohjelmistoihin ja robotiikkaan. \par
-	Tutkimuskysymys \ref{tKysymys3} oli, että miten 
+	Tutkimuskysymys \ref{tKysymys3} oli, miten 
 polunetsintäalgoritmien tehokkuutta voidaan mitata. Tätä varten toteutettiin 
 pienimuotoinen tutkimus, joka sisälsi C++-toteutukset kahdesta algoritmista, 
 joiden ajoaikoja vertailtiin. Tämän tutkimuksen tulokset ja ohjelmakoodi 
-on julkaistu verkossa.\cite{gt2} Tutkimuksissa todettiin, että graafin 
+on julkaistu verkossa.~\cite{gt2} Tutkimuksissa todettiin, että graafin 
 tekninen toteutus vaikutti ajoaikoihin enemmän kuin käytetty algoritmi. 
 Hiukan yllättäen Dijkstran algoritmi ei ollut tutkimuksessa kaikkialla 
 nopeampi kuin BFS. Tämä ei vastaa muiden vastaavien kokeiden tuloksia.
-\cite{mazeGameTrilogi} Muissa vastaavissa mittauksissa on mitattu ajoajan 
+~\cite{mazeGameTrilogi} Muissa vastaavissa mittauksissa on mitattu ajoajan 
 lisäksi löydettyjen polkujen pituutta ja laskutoimituksien lukumäärää.
-\cite{mazeGameTrilogi}\cite{pPacman} \par
-	Minun tekemää testiohjelmaa voisikin parantaa lisäämällä siihen 
+~\cite{mazeGameTrilogi}\cite{pPacman} \par
+	Minun tekemääni testiohjelmaa voisikin parantaa lisäämällä siihen 
 ajoajan lisäksi muita mittareita. Lisäksi voisin jatkotutkimuksena selvittää 
 miksi Dijkstran algoritmi oli testiohjelmassa tietyissä tietorakenteissa 
-hitaampi kuin BFS. Mikäli se johtuu tietorakenneoperaatioiden hitauseroista 
-niinkuin luulen sen johtuvan, niin saattaisi olla järkevää verrata näitä 
+hitaampi kuin BFS. Mikäli se johtuu tietorakenneoperaatioiden hitauseroista, 
+niinkuin luulen sen johtuvan, saattaisi olla järkevää verrata näitä 
 algoritmeja uudestaan kullekin tietorakenteelle optimoidulla algoritmilla 
 geneerisen algoritmin sijasta. \par
 	Tässä tutkielmassa tutustuttiin polunetsintäalgoritmeihin, sekä 
-niiden käyttökohteisiin ja toteutettiin pienimuotoinen tutkimus niiden 
-vertailemiseksi. Tutkimuskysymyksiin on vastattu ja mahdollisia tulevan 
-tutkimisen aiheita on löydetty.
+niiden käyttö\-koh\-teisiin ja toteutettiin pienimuotoinen tutkimus niiden 
+vertailemiseksi. Tut\-ki\-mus\-ky\-sy\-myk\-siin on vastattu ja mahdollisia 
+tulevan tutkimisen aiheita on löydetty.
