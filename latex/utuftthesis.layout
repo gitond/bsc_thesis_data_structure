@@ -40,30 +40,6 @@ Style PubYear
     EndFont
 End
 
-Style PubMonth
-    Margin                Dynamic
-    LatexType             Command
-    LatexName             pubmonth
-    LabelType   Static
-    LabelString           "Publication month: "
-    Align                 Center
-    Font
-      Size                Large
-    EndFont
-End
-
-Style PubLab
-    Margin                Dynamic
-    LatexType             Command
-    LatexName             publab
-    LabelType   Static
-    LabelString           "Laboratory name: "
-    Align                 Center
-    Font
-      Size                Large
-    EndFont
-End
-
 Style PubLabEN
     Margin                Dynamic
     LatexType             Command

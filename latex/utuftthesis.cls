@@ -257,8 +257,6 @@
 %% !! Update these only if the document's main language is not finnish or english !!
 \newcommand{\ye@r}{\the\year}
 \newcommand{\m@nth}{\the\month}
-\newcommand{\p@blab}{Labra}
-\newcommand{\p@blaben}{Laboratory}
 \newcommand{\s@pervisors}{none}
 \newcommand{\k@ywords}{not set}
 \newcommand{\k@ywordstwo}{not set}
@@ -267,8 +265,6 @@
 \newcommand\keywordsen[1]{\renewcommand\k@ywordstwo{#1}}
 \newcommand\pubyear[1]{\renewcommand\ye@r{#1}}
 \newcommand\pubmonth[1]{\renewcommand\m@nth{#1}}
-\newcommand\publab[1]{\renewcommand\p@blab{#1}}
-\newcommand\publaben[1]{\renewcommand\p@blaben{#1}}
 \newcommand\pubtype[1]{\newcommand\p@btype{#1}}
 \newcommand\supervisors[1]{\renewcommand\s@pervisors{#1}}
 \newcommand{\department}[1]{\langchoose{#1}{Tietotekniikan laitos}{Department of Computing}}
@@ -470,7 +466,6 @@
   \thesistype{\l@nguage}\\
   \university{\l@nguage}\\
   \department{\l@nguage}\\
-  \labname{\l@nguage}\\
   \ye@r\\
   \@author
   \ifdefstring{\s@pervisors}{none}{}{\\
@@ -516,7 +511,6 @@
   \end{entry}
   \thesistype{#1}, %
   \pagecounttext{#1} \\
-  \labname{#1} \\
   \monthname{#1}{\m@nth} \ye@r\\
   \rule{\linewidth}{1 pt}%
   \setlength{\parindent}{0em}%
